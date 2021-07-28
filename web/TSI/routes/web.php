@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::view("/","home")->name("home");
 Route::view("/mi_lista","mi_lista")->name("mi_lista");
+Route::view("/añadir_componentes","añadir_componentes")->name("añadir_componentes");
+Route::view("/mostrar_componentes","mostrar_componentes")->name("mostrar_componentes");
 Route::view("/almacenamiento","almacenamiento")->name("almacenamiento");
