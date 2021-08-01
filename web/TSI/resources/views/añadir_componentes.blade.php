@@ -9,16 +9,9 @@
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <label for="tipo-select" class="form-label">Tipo de Componente</label>
-            <select class="form-select" id="tipo-select">
-              <option value="gabinete">Gabinete</option>
-              <option value="placamadre">Placa Madre</option>
-              <option value="procesador">Procesador</option>
-              <option value="tarjetavideo">Tarjeta de Video</option>
-              <option value="almacenamiento">Almacenamiento</option>
-              <option value="fuentepoder">Fuente de Poder</option>
-              <option value="ram">Memoria RAM</option>
-              <option value="cooler">Cooler</option>
+            <label for="tipocomp-select" class="form-label">Tipo de Componente</label>
+            <select class="form-select" id="tipocomp-select">
+              
             </select>
           </div>
           <div class="mb-3">
@@ -39,9 +32,14 @@
           </div>
         </div>
         <div class="card-footer d-grip gap-1">
-          <button class="btn btn-success" type="button">Registrar</button>
+          <button id="registrar-btn" class="btn btn-success" type="button">Registrar</button>
         </div>
       </div>
     </div>
   </div>
+@endsection
+@section("javascript")
+  <script src="{{asset('js/servicios/componentesService.js')}}"></script>
+  <script src="{{asset('js/servicios/marcasService.js')}}"></script>
+  <script src="{{asset('js/añadir_componentes.js')}}"></script>
 @endsection

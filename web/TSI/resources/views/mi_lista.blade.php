@@ -14,7 +14,7 @@
           </div>
           <div class="mb-3">
             <label for="gabinete-select" class="form-label">Gabinete</label>
-            <select class="form-select" id="gabiente-select">
+            <select class="form-select" id="gabinete-select">
 
             </select>
           </div>
@@ -62,25 +62,41 @@
           </div>
         </div>
         <div class="card-footer d-grip gap-1 bg-info">
-          <button class="btn btn-success " type="button">Registrar</button>
+          <button id="registrar-btn" class="btn btn-success " type="button">Registrar</button>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-6 mx-auto">
       <div class="card">
-        <div class="card-header text-center bg-info bg-gradient">
-            <span>Mis Listas</span>
+        <div class="card-header text-center bg-info">
+          <span>Mis Listas</span>
         </div>
         <div class="card-body">
           <table class="table table-hover table-bordered table-striped table-responsive">
-            <thead class="bg-info">
+            <thead class="bg-info text-center">
             </thead>
-            <tbody id="tbody-lista">
-
+            <tbody id="tbody-listas">
             </tbody>
           </table>
+        </div>
+        <div class="card footer">
+          <button id="subir-btn" class="btn btn-secondary" type="button">Subir</button>
         </div>
       </div>
     </div>
   </div>
+@endsection
+
+@section("javascript")
+  <script src="https://tholman.com/elevator.js/elevator.js" ></script>
+  <script>
+    window.onload = function subirPagina() {
+      let elevator = new Elevator({
+        element: document.querySelector("#subir-btn")
+      });
+    }
+  </script>
+  <script src="{{asset('js/servicios/componentesService.js')}}"></script>
+  <script src="{{asset('js/servicios/listasService.js')}}"></script>
+  <script src="{{asset('js/mi_lista.js')}}"></script>
 @endsection
