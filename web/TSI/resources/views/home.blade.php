@@ -30,3 +30,8 @@
         </div>
     </div>
 @endsection
+
+@section("javascript")
+  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+  <div class="elfsight-app-cd22e2fb-ae46-4598-a817-9d897234a01f"></div>
+@endsection
