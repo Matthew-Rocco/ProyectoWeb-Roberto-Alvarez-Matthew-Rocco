@@ -7,7 +7,7 @@
                 <div class="card-header row bg-info bg-gradient">
                     <div class="col-10 pt-2">
                       <div>
-                        <h6>Almacenamiento</h6>
+                        <h6>Destacados</h6>
                       </div>
                     </div>
                     <div class="col-2 text-end">
@@ -16,13 +16,29 @@
                       </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{asset('img/ssd.jpg')}}" class="card-img-top img-fluid" alt="">
-                        <div class="card-body">
-                            <p class="card-text">WD® Unidad SSD 120GB Sata3 2.5" Green</p>
-                        </div>
+                <div class="container">
+                  <div class="card-group mt-3">
+
+                    <div class="card text-center border-info" style="width: 18rem;">
+                      <img src="{{asset('img/ssd.jpg')}}" class="card-img-top img-fluid" alt="">
+                      <div class="card-body">
+                          <p class="card-text">WD® Unidad SSD 120GB Sata3 2.5" Green</p>
+                      </div>
                     </div>
+
+                    <div class="card text-center border-info" style="width: 18rem;">
+                      <img src="{{asset('img/plc.jpg')}}" class="card-img-top img-fluid" alt="">
+                      <div class="card-body">
+                        <p class="card-text">MSI B450 Gaming Pro Carbon AC</p>
+                      </div>
+                    </div>
+
+                    <div class="card text-center border-info" style="width: 18rem;">
+                      <img src="{{asset('img/ram.jpg')}}" class="card-img-top img-fluid" alt="">
+                      <div class="card-body">
+                          <p class="card-text">Memoria Ram DDR4 8GB 2666MHz HyperX Fury Black, Non-ECC, CL16, XMP</p>
+                      </div>
+                    </div>  
                 </div>
                 <div class="card-footer bg-info">
                 </div>
