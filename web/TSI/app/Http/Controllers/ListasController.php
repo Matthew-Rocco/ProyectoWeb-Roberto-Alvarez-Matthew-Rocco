@@ -52,6 +52,7 @@ class ListasController extends Controller
         $input = $request->all();
         
         $id = $input["id"];
+        $lista= Lista::findOrFail($id);
         $titulo = $input["titulo"];
         $gabinete = $input["gabinete"];
         $placamadre = $input["placamadre"];
@@ -76,6 +77,12 @@ class ListasController extends Controller
         $lista->precio = $precio;
 
         $lista->save();
+        return $lista;
+    }
+    public function buscarListaPorId(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $lista = Lista::findOrFail($id);
         return $lista;
     }
 }

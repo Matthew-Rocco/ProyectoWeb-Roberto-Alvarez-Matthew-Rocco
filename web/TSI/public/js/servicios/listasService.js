@@ -26,3 +26,21 @@ const eliminarListas = async (id)=>{
     }
 };
 
+const buscarListaPorId = async (id)=>{
+    let resp = await axios.get(`api/listas/buscarListaPorId?id=${id}`);
+    return resp.data;
+}
+
+const actualizarLista = async (lista)=>{
+    try{
+        let resp = await axios.post("api/listas/actualizar", lista, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return resp.data;
+    }catch(e){
+        return false;
+    }
+};
+

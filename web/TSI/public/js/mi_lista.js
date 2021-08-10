@@ -1,4 +1,3 @@
-
 const cargarCombosListas= async ()=>{
     let almacenamientoSelect = document.querySelector("#gabinete-select");
     let componentes = await getComponentes("Gabinete");
@@ -129,6 +128,8 @@ document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
 });
 
 
+
+
 const iniciarEliminacion = async function(){
     let id = this.idLista;
     let resp = await Swal.fire({title: "Esta seguro?", text:"Esta operacion es irreversible",icon:"error",showCancelButton:true});
@@ -146,12 +147,51 @@ const iniciarEliminacion = async function(){
     }
 };
 
-const iniciarActualizacion = async function(){
-    let id = this.idLista;
-    console.log(id);
+const actualizar = async function(){
+    let idLista = this.idLista;
+    let lista = await buscarListaPorId(idLista);
+    let molde = this.parentNode.parentNode;
+    lista.titulo = molde.querySelector(".titulo-txt").value;
+    lista.gabinete = molde.querySelector(".gabinete-txt").value;
+    lista.placamadre = molde.querySelector(".placamadre-txt").value;
+    lista.procesador = molde.querySelector(".procesador-txt").value;
+    lista.tarjetavideo = molde.querySelector(".tarjetavideo-txt").value;
+    lista.almacenamiento = molde.querySelector(".almacenamiento-txt").value;
+    lista.fuentepoder = molde.querySelector(".fuentepoder-txt").value;
+    lista.ram = molde.querySelector(".ram-txt").value;
+    lista.cooler = molde.querySelector(".cooler-txt").value;
+    lista.precio = +molde.querySelector(".precio-txt").value;
 
+    await actualizarLista(lista);
+    await Swal.close();
     
-    window.location.href = "actualizar_lista";
+    let listas = await getListas();
+    cargarTabla(listas);
+};
+
+
+const iniciarActualizacion = async function(){
+    let idLista = this.idLista;
+    let lista = await buscarListaPorId(idLista);
+    let molde = document.querySelector(".molde-actualizar").cloneNode(true);
+    molde.querySelector(".titulo-txt").value = lista.titulo;
+    molde.querySelector(".gabinete-txt").innerText = lista.gabinete;
+    molde.querySelector(".placamadre-txt").innerText = lista.placamadre;
+    molde.querySelector(".procesador-txt").innerText = lista.procesador;
+    molde.querySelector(".tarjetavideo-txt").innerText = lista.tarjetavideo;
+    molde.querySelector(".almacenamiento-txt").innerText = lista.almacenamiento;
+    molde.querySelector(".fuentepoder-txt").innerText = lista.fuentepoder;
+    molde.querySelector(".ram-txt").innerText = lista.ram;
+    molde.querySelector(".cooler-txt").innerText = lista.cooler;
+    molde.querySelector(".precio-txt").innerText = lista.precio;
+
+    molde.querySelector(".actualizar-btn").idLista = idLista;
+    molde.querySelector(".actualizar-btn").addEventListener("click", actualizar);
+    await Swal.fire({
+        title:"Actualizar",
+        html: molde,
+        confirmButtonText: "Cerrar"
+    });
 }
 
 const cargarTabla = (listas)=>{
@@ -246,7 +286,7 @@ const cargarTabla = (listas)=>{
 
 
 document.addEventListener("DOMContentLoaded", async ()=>{
-    cargarCombosListas();
+    await cargarCombosListas();
     let listas = await getListas();
     cargarTabla(listas);
 });

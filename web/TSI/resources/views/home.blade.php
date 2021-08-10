@@ -20,21 +20,27 @@
                   <div class="card-group mt-3">
 
                     <div class="card text-center border-info" style="width: 18rem;">
-                      <img src="{{asset('img/ssd.jpg')}}" class="card-img-top img-fluid" alt="">
+                      <a href="{{ route('almacenamiento') }}">
+                        <img src="{{asset('img/ssd.jpg')}}" class="card-img-top img-fluid" alt="">
+                     </a>
                       <div class="card-body">
                           <p class="card-text">WD® Unidad SSD 120GB Sata3 2.5" Green</p>
                       </div>
                     </div>
 
                     <div class="card text-center border-info" style="width: 18rem;">
-                      <img src="{{asset('img/plc.jpg')}}" class="card-img-top img-fluid" alt="">
+                      <a href="{{ route('almacenamiento') }}">
+                        <img src="{{asset('img/plc.jpg')}}" class="card-img-top img-fluid" alt="">
+                     </a>
                       <div class="card-body">
                         <p class="card-text">MSI B450 Gaming Pro Carbon AC</p>
                       </div>
                     </div>
 
                     <div class="card text-center border-info" style="width: 18rem;">
-                      <img src="{{asset('img/ram.jpg')}}" class="card-img-top img-fluid" alt="">
+                      <a href="{{ route('almacenamiento') }}">
+                        <img src="{{asset('img/ram.jpg')}}" class="card-img-top img-fluid" alt="">
+                     </a>
                       <div class="card-body">
                           <p class="card-text">Memoria Ram DDR4 8GB 2666MHz HyperX Fury Black, Non-ECC, CL16, XMP</p>
                       </div>

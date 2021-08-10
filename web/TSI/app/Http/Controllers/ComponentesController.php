@@ -53,7 +53,14 @@ class ComponentesController extends Controller
         return "ok";
     }
 
-    public function actualizarComponentes(Request $request){
+    public function buscarPorId(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $componente = Componente::findOrFail($id);
+        return $componente;
+    }
+
+    public function actualizarComponente(Request $request){
         $input = $request->all();
         $id = $input["id"];
         $componente = Componente::findOrFail($id);
@@ -65,5 +72,4 @@ class ComponentesController extends Controller
         $componente->save();
         return $componente;
     }
-
-}
+};

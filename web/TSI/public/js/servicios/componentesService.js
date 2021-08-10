@@ -32,11 +32,20 @@ const eliminarComponentes = async (id)=>{
 };
 
 
-const actualizarComponentes = async (id)=>{
-    let resp = await axios.post("api/componentes/actualizar", componente, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+const actualizarComponente = async (componente)=>{
+    try{
+        let resp = await axios.post("api/componentes/actualizar", componente, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return resp.data;
+    }catch(e){
+        return false;
+    }
+};
+
+const buscarPorId = async (id)=>{
+    let resp = await axios.get(`api/componentes/buscarPorId?id=${id}`);
     return resp.data;
 };

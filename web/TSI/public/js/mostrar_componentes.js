@@ -1,5 +1,5 @@
-const cargarTiposComp = async ()=>{
-    let filtroCbx = document.querySelector("#filtro-cbx");
+const cargarTiposComp = async (select)=>{
+    let filtroCbx = select;
 
     let tipos = await getTiposComp();
     tipos.forEach(t=>{
@@ -27,9 +27,47 @@ const iniciarEliminacion = async function(){
     }
 };
 
+const actualizar = async function(){
+    let idComponente = this.idComponente;
+    let componente = await buscarPorId(idComponente);
+
+    componente.tipocomp = document.querySelector("#tipo-actualizar").value;
+    componente.nombre = document.querySelector("#nombre-txt").value;
+    componente.precio = +document.querySelector("#precio-txt").value;
+    componente.descripcion = document.querySelector("#descripcion-txt").value;
+    componente.linkcomp = document.querySelector("#link-txt").value;
+
+    actualizarComponente(componente);
+
+
+    let resp = await Swal.fire({title: "Actualizar Componente", text:"Desea actualizar el componente?",icon:"question",showCancelButton:true});
+
+    if(resp.isConfirmed){
+        if(await actualizarComponente(componente)){
+            let filtro = document.querySelector("#filtro-cbx").value;
+            let componentes = await getComponentes(filtro);
+            cargarTabla(componentes);
+            Swal.fire("Componente actualizado", "Componente actualizado exitosamente", "info");
+        }else{
+            Swal.fire("Error", "No se pudo atender la solicitud", "error");
+        }
+    } else {
+        Swal.fire("Cancelado","Cancelado a peticion del usuario", "info");
+    }
+};
+
 const iniciarActualizacion = async function(){
-    window.location.href = "actualizar_componente";
-}
+    let idComponente = this.idComponente;
+    let componente = await buscarPorId(idComponente);
+    document.querySelector("#tipo-actualizar").value = componente.tipocomp;
+    document.querySelector("#nombre-txt").value = componente.nombre;
+    document.querySelector("#precio-txt").value = componente.precio;
+    document.querySelector("#descripcion-txt").value = componente.descripcion;
+    document.querySelector("#link-txt").value = componente.linkcomp;
+
+    document.querySelector("#actualizar-btn").idComponente = idComponente;
+    document.querySelector("#actualizar-btn").addEventListener("click", actualizar);
+};
 
 
 const cargarTabla = (componentes)=>{
@@ -75,14 +113,15 @@ const cargarTabla = (componentes)=>{
     }
 };
 
-document.addEventListener("change", async ()=>{
+document.querySelector("#filtro-cbx").addEventListener("change", async ()=>{
     let filtro = document.querySelector("#filtro-cbx").value;
     let componentes = await getComponentes(filtro);
     cargarTabla(componentes);
 });
 
 document.addEventListener("DOMContentLoaded", async ()=>{
-    await cargarTiposComp();
+    await cargarTiposComp(document.querySelector("#filtro-cbx"));
+    await cargarTiposComp(document.querySelector("#tipo-actualizar"));
     let componentes = await getComponentes();
     cargarTabla(componentes);
 });

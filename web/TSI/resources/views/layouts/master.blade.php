@@ -26,6 +26,9 @@
               <a class="nav-link" href="{{route('añadir_componentes')}}">Añadir componentes</a>
               <a class="nav-link" href="{{route('mostrar_componentes')}}">Mostrar componentes</a>
               <a class="nav-link" href="{{route('mi_lista')}}">Mis Listas</a>
+              <a class="nav-link" href="{{route('mostrar_tienda')}}">Ver Tiendas</a>
+              <a class="nav-link" href="{{route('users')}}">Registrar Usuarios</a>
+              <a class="nav-link" href="{{route('mostrar_users')}}">Mostrar Usuarios</a>
             </div>
           </div>
         </div>

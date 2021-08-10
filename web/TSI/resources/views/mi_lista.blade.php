@@ -85,6 +85,63 @@
       </div>
     </div>
   </div>
+  <div class="d-none">
+    <div class="row mt-5 molde-actualizar">
+      <div class="col-12 mx-auto">
+        <div class="card">
+          <div class="card-header text-center bg-info bg-gradient">
+            <span>Actualizar Lista</span>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="titulo-txt" class="form-label">Titulo de la Lista</label>
+              <input type="text" class="form-control titulo-txt">
+            </div>
+            <div class="mb-3">
+              <label for="gabinete-txt" class="form-label">Gabinete:</label>
+              <label class="form-label gabinete-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="placamadre-txt" class="form-label">Placa Madre:</label>
+              <label class="form-label placamadre-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="procesador-txt" class="form-label">Procesador:</label>
+              <label class="form-label procesador-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="tarjetavideo-txt" class="form-label">Tarjeta de Video:</label>
+              <label class="form-label tarjetavideo-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="almacenamiento-txt" class="form-label">Almacenamiento:</label>
+              <label class="form-label almacenamiento-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="fuentepoder-txt" class="form-label">Fuente de Poder:</label>
+              <label class="form-label fuentepoder-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="ram-txt" class="form-label">Memoria RAM:</label>
+              <label class="form-label ram-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="cooler-txt" class="form-label">Cooler:</label>
+              <label class="form-label cooler-txt"></label>
+            </div>
+            <div class="mb-3">
+              <label for="precio-txt" class="form-label">Precio:</label>
+              <label class="form-label precio-txt"></label>
+            </div>
+          </div>
+          <div class="card-footer d-grip gap-1 bg-info">
+            <button class="btn btn-primary actualizar-btn" type="button">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 @endsection
 
 @section("javascript")
