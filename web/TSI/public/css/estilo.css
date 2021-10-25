@@ -1,0 +1,52 @@
+.estilonavbar{
+    background-color: #008BCC;
+    min-height: 60px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.colorbg{
+    background-color: #008BCC;
+}
+
+.login{
+    height: 35px;
+    width: auto;
+}
+
+.logo{
+    height: auto;
+    width: 170px;
+}
+
+body {
+    background-image: url("https://fondosmil.com/fondo/17543.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.texto{
+    color:#fff;
+}
+
+.estilofooter {
+    background-color: #333;
+    color: #eee;
+}
+
+.titulofooter{
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 9px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #eee;
+}
+
+.estiloimagen{
+    width: 5cm;
+}
