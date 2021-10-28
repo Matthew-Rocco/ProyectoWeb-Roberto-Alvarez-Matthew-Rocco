@@ -115,12 +115,16 @@ const cargarTabla = (componentes)=>{
         tdNombre.innerText = componentes[i].nombre;
         let tdTipoComp = document.createElement("td");
         tdTipoComp.innerText = componentes[i].tipocomp;
-        let tdPrecio = document.createElement("td");
-        tdPrecio.innerText = componentes[i].precio;
+        let tdValoracion = document.createElement("td");
+        tdValoracion.innerText = componentes[i].valoracion;
         let tdDescripcion = document.createElement("td");
         tdDescripcion.innerText = componentes[i].descripcion;
-        let tdLink = document.createElement("td");
-        tdLink.innerText = componentes[i].linkcomp;
+
+        let tdImagen = document.createElement("td");
+        let imgImagen = document.createElement("img");
+        imgImagen.setAttribute("src","{{asset('" + componentes[i].imagen + "')}}");
+        tdImagen.appendChild(imgImagen);
+
         let tdAcciones = document.createElement("td");
 
         let botonEliminar = document.createElement("button");
@@ -148,9 +152,9 @@ const cargarTabla = (componentes)=>{
 
         tr.appendChild(tdNombre);
         tr.appendChild(tdTipoComp);
-        tr.appendChild(tdPrecio);
+        tr.appendChild(tdValoracion);
         tr.appendChild(tdDescripcion);
-        tr.appendChild(tdLink);
+        tr.appendChild(tdImagen);
         tr.appendChild(tdAcciones);
 
         tbody.appendChild(tr);

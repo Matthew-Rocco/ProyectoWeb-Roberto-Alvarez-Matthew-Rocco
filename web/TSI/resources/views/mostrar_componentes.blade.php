@@ -22,9 +22,9 @@
           <tr>
             <td>Nombre</td>
             <td>Tipo Componente</td>
-            <td>Precio</td>
+            <td>Valoracion</td>
             <td>Descripcion</td>
-            <td>Link</td>
+            <td>Imagen</td>
             <td>Acciones</td>
           </tr>
         </thead>

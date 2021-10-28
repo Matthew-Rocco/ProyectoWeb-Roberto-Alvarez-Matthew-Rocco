@@ -37,9 +37,15 @@ class ComponentesController extends Controller
         $componente = new Componente();
         $componente->tipocomp = $input["tipocomp"];
         $componente->nombre = $input["nombre"];
-        $componente->precio = $input["precio"];
         $componente->descripcion = $input["descripcion"];
-        $componente->linkcomp = $input["linkcomp"];
+        $componente->valoracion = $input["valoracion"];
+        $componente->imagen = $input["imagen"];
+
+        /*if($archivo = $request->file('imagen')){
+            $nombre=$archivo->getClientOriginalName();
+            $archivo->move('img',$nombre);
+            $componente->imagen = $nombre;
+        }*/
 
         $componente->save();
         return $componente;
@@ -68,7 +74,9 @@ class ComponentesController extends Controller
         $componente->nombre = $input["nombre"];
         $componente->precio = $input["precio"];
         $componente->descripcion = $input["descripcion"];
-        $componente->linkcomp = $input["linkcomp"];
+        $componente->valoracion = $input["valoracion"];
+        $componente->imagen = $input["imagen"];
+        
         $componente->save();
         return $componente;
     }

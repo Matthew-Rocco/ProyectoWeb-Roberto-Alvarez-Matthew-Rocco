@@ -14,39 +14,40 @@ document.addEventListener("DOMContentLoaded", ()=>{
 document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
     let tipocomp = document.querySelector("#tipocomp-select").value.trim();
     let nombre = document.querySelector("#nombre-txt").value.trim();
-    let precio = document.querySelector("#precio-txt").value.trim();
+    let valoracion = document.querySelector("#valoracion-txt").value.trim();
     let descripcion = document.querySelector("#descripcion-txt").value.trim();
-    let linkcomp = document.querySelector("#link-txt").value.trim();
+    let imagen = document.querySelector("#imagen").value.trim();
 
     let errores = [];
     if(nombre === ""){
         errores.push("Debe ingresar un nombre");
     }
 
-    if(linkcomp === ""){
-        errores.push("Debe ingresar un link");
-    }else{
-        let componentes = await getComponentes();
-        let componenteEncontrado = componentes.find(c=>c.linkcomp.toLowerCase() == linkcomp.toLowerCase());
-        if(componenteEncontrado != undefined){
-            errores.push("El componente de esa tienda ya existe")
-        }
+    if(imagen === ""){
+        errores.push("Debe ingresar una imagen");
     }
-    if(precio === ""){
-        errores.push("Debe ingresar un precio");
-    }else if(isNaN(precio)){
-        errores.push("El precio debe ser numerico");
-    }else if(+precio < 0){
-        errores.push("El precio no debe ser negativo");
+
+    if(valoracion === ""){
+        errores.push("Debe ingresar una valoracion");
+    }else if(isNaN(valoracion)){
+        errores.push("La valoracion debe ser numerica");
+    }else if(valoracion < 0){
+        errores.push("La valoracion no debe ser negativa");
+    }else if(valoracion > 10){
+        errores.push("La valoracion debe estar entre 0 y 10");
+    }
+
+    if(descripcion === ""){
+        errores.push("Debe ingresar una descripcion");
     }
 
     if(errores.length == 0){
         let componente = {};
         componente.tipocomp = tipocomp;
         componente.nombre = nombre;
-        componente.precio = precio;
+        componente.valoracion = valoracion;
         componente.descripcion = descripcion;
-        componente.linkcomp = linkcomp;
+        componente.imagen = imagen;
         
         let res = await crearComponentes(componente);
         Swal.fire("Componente Creado", "Componente creado exitosamente", "info");

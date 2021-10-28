@@ -1,3 +1,12 @@
+<?php
+    if (isset($_POST['enSesion']) == true) {
+        $usuario = $_POST['enSesion'];
+    }else {
+        $usuario = 0;
+    }
+?>
+
+
 <!doctype html>
 <html lang="es">
 
@@ -57,8 +66,13 @@
                             <img class="login" src="{{ asset('img/usuario.png') }}" alt="usuario">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% if <?php echo $usuario ?> == 0 %}
                             <li><a class="nav-link active text-dark" href="{{ route('users') }}">Iniciar Sesión</a></li>
                             <li><a class="nav-link active text-dark" href="{{ route('registrar_users') }}">Registrarse</a></li>
+                            {% else %}
+                            <li><a href="nav-link active text-dark" href="{{route('mi_lista')}}">Mis Listas</a></li>
+                            <li><a href="nav-link active text-dark" href="{{route('añadir_componentes')}}">Añadir un Componente</a></li>
+                            <li>Cerrar Sesion</li>
                         </ul>
                     </div>
                 </div>

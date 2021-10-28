@@ -12,6 +12,7 @@ class ListasController extends Controller
 
     public function crearLista(Request $request){
         $input = $request->all();
+        $userid = $input["userid"];
         $titulo = $input["titulo"];
         $gabinete = $input["gabinete"];
         $placamadre = $input["placamadre"];
@@ -24,6 +25,7 @@ class ListasController extends Controller
         $precio = $input["precio"];
         
         $lista = new Lista();
+        $lista->userid = $userid;
         $lista->titulo = $titulo;
         $lista->gabinete = $gabinete;
         $lista->placamadre = $placamadre;

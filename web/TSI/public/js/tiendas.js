@@ -1,6 +1,5 @@
 document.querySelector("#registrartienda-btn").addEventListener("click", async ()=>{
     let nombretienda = document.querySelector("#nombretienda-txt").value.trim();
-    let descripciontienda = document.querySelector("#descripciontienda-txt").value.trim();
     let linktienda = document.querySelector("#linktienda-txt").value.trim();
 
     let errores = [];

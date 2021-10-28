@@ -10,15 +10,15 @@ document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
     }
     if(email === ""){
         errores.push("Debe ingresar un email");
-    }
-    if(password === ""){
-        errores.push("Debe ingresar una contraseña");
     }else{
         let users = await getUsers();
-        let userEncontrado = users.find(c=>c.password== password);
+        let userEncontrado = users.find(c=>c.email.toLowerCase() == email.toLowerCase());
         if(userEncontrado != undefined){
             errores.push("Email ya ha sido utilizado")
         }
+    }
+    if(password === ""){
+        errores.push("Debe ingresar una contraseña");
     }
 
     if(errores.length == 0){

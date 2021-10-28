@@ -19,16 +19,16 @@
             <input type="text" id="nombre-txt" class="form-control">
           </div>
           <div class="mb-3">
-            <label for="precio-txt" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="precio-txt">
+            <label for="valoracion-txt" class="form-label">Valoracion</label>
+            <input type="number" class="form-control" id="valoracion-txt">
           </div>
           <div class="mb-3">
             <label for="descripcion-txt" class="form-label">Descripción</label>
             <textarea id="descripcion-txt" class="form-control"></textarea>
           </div>
           <div class="mb-3">
-            <label for="link-txt" class="form-label">Link del componente</label>
-            <input type="text" id="link-txt" class="form-control">
+            <label for="imagen" class="form-label">Subir Imagen</label>
+            <input type="file" class="form-control" id="imagen">
           </div>
         </div>
         <div class="card-footer d-grip gap-1">

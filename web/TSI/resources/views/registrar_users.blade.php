@@ -74,14 +74,16 @@ span.psw {
   </div>
 
   <div class="container">
-    <label for="uname"><b>Usuario</b></label>
+    <label for="name-txt"><b>Usuario</b></label>
     <input type="text" placeholder="Ingresar Usuario" id="name-txt" required>
 
-    <label for="uname"><b>Correo</b></label>
+    <label for="email-txt"><b>Correo</b></label>
     <input type="text" placeholder="Ingresar Correo" id="email-txt" required>
 
-    <label for="psw"><b>Contraseña</b></label>
+    <label for="password-txt"><b>Contraseña</b></label>
     <input type="password" placeholder="Ingresar Contraseña" id="password-txt" required>
+
+    <span name="enSesion" style="display:none">1</span>
         
     <button type="submit" id="registrar-btn" >Guardar Datos</button>
 
@@ -98,4 +100,9 @@ span.psw {
 
 
 
+@endsection
+
+@section('javascript')
+  <script src="{{asset('js/servicios/usersService.js')}}"></script>
+  <script src="{{asset('js/añadir_users.js')}}"></script>
 @endsection
