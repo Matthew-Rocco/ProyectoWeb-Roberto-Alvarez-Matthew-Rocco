@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function crearUsers(Request $request){
         $input = $request->all();
         $user = new User();
-        $user->name = $input["name"] ?? "";
+        $user->name = $input["name"];
         $user->email = $input["email"];
         
         $user->password = $input["password"];
@@ -27,12 +27,23 @@ class UsersController extends Controller
 
     public function eliminarUsers(Request $request){
         $input = $request->all();
+        $id = $input["id"];
+        $user = User::findOrFail($id);
         $user->delete();
         return "ok";
+    }
+    
+    public function buscarPorId(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $user = User::findOrFail($id);
+        return $componente;
     }
 
     public function actualizarUsers(Request $request){
         $input = $request->all();
+        $id = $input["id"];
+        $user = User::findOrFail($id);
         $user->name = $input["name"];
         $user->email = $input["email"];
         $user->password = $input["password"];

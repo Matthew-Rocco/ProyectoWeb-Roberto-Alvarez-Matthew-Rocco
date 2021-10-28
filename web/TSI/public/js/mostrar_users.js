@@ -25,13 +25,11 @@ const actualizar = async function(){
     user.password = document.querySelector("#password-txt").value;
 
 
-    actualizarComponente(user);
-
-
     let resp = await Swal.fire({title: "Actualizar Usuario", text:"Desea actualizar el Usuario?",icon:"question",showCancelButton:true});
 
     if(resp.isConfirmed){
         if(await actualizarUsers(user)){
+            actualizarUsers(user);
             let filtro = document.querySelector("#filtro-cbx").value;
             let users = await getUsers(filtro);
             cargarTabla(users);

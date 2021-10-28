@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('contenido')
   <div class="row mt-5">
     <div class="col-12 col-md-6 col-lg-5 mx-auto">
@@ -9,8 +10,8 @@
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <label for="tipocomp-select" class="form-label">Tipo de Componente</label>
-            <select class="form-select" id="tipocomp-select">
+            <label for="tipo-actualizar" class="form-label">Tipo de Componente</label>
+            <select class="form-select" id="tipo-actualizar">
               
             </select>
           </div>
@@ -32,7 +33,7 @@
           </div>
         </div>
         <div class="card-footer d-grip gap-1">
-          <button id="actualizar-btn" class="btn btn-success" type="button">Actualizar</button>
+          <button id="actualizar-btn" class="btn btn-info" type="button">Actualizar</button>
         </div>
       </div>
     </div>

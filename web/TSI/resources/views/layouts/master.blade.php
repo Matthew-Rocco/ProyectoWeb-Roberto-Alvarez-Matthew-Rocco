@@ -29,22 +29,25 @@
                     <div class="col-10">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"
+                                <a class="nav-link active" style="color:white" aria-current="page"
                                     href="{{ route('home') }}">Componentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('añadir_componentes') }}">Añadir
+                                <a class="nav-link active" style="color:white" href="{{ route('añadir_componentes') }}">Añadir
                                     componentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('mostrar_componentes') }}">Mostrar
+                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Mostrar
                                     componentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('mi_lista') }}">Mis Listas</a>
+                                <a class="nav-link active" style="color:white" href="{{ route('mi_lista') }}">Mis Listas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('mostrar_tienda') }}">Ver Tiendas</a>
+                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_tienda') }}">Ver Tiendas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_users') }}">Ver usuarios</a>
                             </li>
                         </ul>
                     </div>
@@ -55,7 +58,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="nav-link active text-dark" href="{{ route('users') }}">Iniciar Sesión</a></li>
-                            <li><a class="nav-link active text-dark" href="{{ route('users') }}">Registrarse</a></li>
+                            <li><a class="nav-link active text-dark" href="{{ route('registrar_users') }}">Registrarse</a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,7 +70,7 @@
         @yield('contenido')
     </main>
 
-    <footer class="container-fluid estilofooter mt-4 bottom-0">
+    <footer class="container-fluid estilofooter mt-5 bottom-0">
         <div class="row p-2 pb-4">
             <div class="col-6">
                 <h2 class="titulofooter">Sobre Nosotros</h2>

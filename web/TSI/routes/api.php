@@ -33,7 +33,7 @@ Route::post('componentes/delete',[ComponentesController::class, "eliminarCompone
 
 //Usuarios
 Route::get('users/get',[UsersController::class, "getUsers"]);
-Route::get('users/buscarPorId', [ListasController::class, "buscarPorId"]);
+Route::get('users/buscarPorId', [UsersController::class, "buscarPorId"]);
 
 Route::post('users/post',[UsersController::class, "crearUsers"]);
 Route::post('users/actualizar',[UsersController::class, "actualizarUsers"]);
