@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,13 @@ Route::view("/mostrar_componentes","mostrar_componentes")->name("mostrar_compone
 Route::view("/actualizar_componente","actualizar_componente")->name("actualizar_componente");
 Route::view("/actualizar_lista","actualizar_lista")->name("actualizar_lista");
 Route::view("/almacenamiento","almacenamiento")->name("almacenamiento");
+
+
+
+Route::get('registrar_usuarios', [UsersController::class, "crear_usuario"])->middleware('guest');
+Route::post('registrar_usuarios', [UsersController::class, "guardar_usuario"])->middleware('guest');
+
+Route::get('iniciar_sesion', [UsersController::class, "iniciar_sesion"])->middleware('guest');
+Route::post('iniciar_sesion', [UsersController::class, "sesion"])->middleware('guest');
+
+Route::post('cerrar_sesion', [UsersController::class, "cerrar_sesion"])->middleware('auth');

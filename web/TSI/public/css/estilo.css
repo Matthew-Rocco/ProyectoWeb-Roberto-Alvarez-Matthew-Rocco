@@ -1,20 +1,20 @@
-.estilonavbar{
+.estilonavbar {
     background-color: #075477;
     min-height: 60px;
     padding-right: 1px;
     padding-left: 1px;
 }
 
-.colorbg{
+.colorbg {
     background-color: #075477;
 }
 
-.login{
+.login {
     height: 35px;
     width: auto;
 }
 
-.logo{
+.logo {
     height: auto;
     width: 170px;
 }
@@ -22,13 +22,13 @@
 body {
     background-image: url("https://fondosmil.com/fondo/17543.jpg");
     background-size: cover;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
 }
 
-.texto{
-    color:#fff;
+.texto {
+    color: #fff;
 }
 
 .estilofooter {
@@ -36,7 +36,7 @@ body {
     color: #eee;
 }
 
-.titulofooter{
+.titulofooter {
     font-size: 24px;
     font-weight: 500;
     padding-bottom: 9px;
@@ -47,6 +47,6 @@ body {
     border-bottom-color: #eee;
 }
 
-.estiloimagen{
+.estiloimagen {
     width: 5cm;
 }

@@ -1,99 +1,47 @@
 @extends('layouts.master')
 
 @section('contenido')
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 20px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-button:hover {
-  opacity: 0.8;
-}
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-.iniciobtn{
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-.avatar {
-  width: 100px;
-  border-radius: 100%;
-  background: #075477;
-  padding: 15px;
-}
-.container {
-  padding: 100px;
-}
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-</head>
-<body>
-<form action="{{route('home')}}" method="post">
-  <div class="imgcontainer">
-    <img src="{{asset('img/usuario.png')}}" alt="Avatar" class="avatar">
-  </div>
+    <!DOCTYPE html>
+    <html>
 
-  <div class="container">
-    <label for="uname"><b>Nombre de Usuario</b></label>
-    <input type="text" placeholder="Ingresar Nombre" name="uname" required>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/estilo_registrar.css') }}">
+    </head>
 
-    <label for="psw"><b>Contraseña</b></label>
-    <input type="password" placeholder="Ingresar Contraseña" name="psw" required>
-        
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Recordarme
-    </label>
-  </div>
+    <body>
+        <form action="iniciar_sesion" method="POST">
+            @csrf
+            <div class="imgcontainer">
+                <img src="{{ asset('img/usuario.png') }}" alt="Avatar" class="avatar">
+            </div>
+            <div>
+                <h1 class="text-center font-bold">INICIAR SESIÓN</h1>
+            </div>
+            <div class="container">
+                
+                <label for="email"><b>Correo</b></label>
+                <input type="text" placeholder="Ingresar Correo" id="email" name="email" value="{{ old('email') }}"
+                    required>
 
-  <div class="container" style="background-color:#ffffff">
-    <button type="button" class="cancelbtn">Cancelar</button>
-    <span class="psw">Olvido <a href="#">la contraseña?</a></span>
-    <li><a class="nav-link active" aria-current="page" href="{{route('home')}}">Inicio</a></li>
-  </div>
-</form>
+                @error('email')
+                    <p class="text-danger text-xs mt-1">{{$message}}</p>
+                @enderror
 
-</body>
-</html>
+                <label for="password"><b>Contraseña</b></label>
+                <input type="password" placeholder="Ingresar Contraseña" id="password" name="password" required>
+
+                @error('password')
+                    <p class="text-danger text-xs mt-1">La contraseña debe tener como mínimo 8 caracteres</p>
+                @enderror
+
+
+                <button class="bg-success btn rounded-3 text-white" type="submit" id="registrar-btn">Iniciar Sesión</button>
+
+            </div>
+        </form>
+    </body>
+
+    </html>
 
 @endsection

@@ -8,10 +8,10 @@
           <div class="card-header colorbg bg-gradient">
             <div class="row">
               <div class="col-10 pt-2">
-                <h6>Destacados</h6>
+                <h6 class="text-white">Destacados</h6>
               </div>
               <div class="col-2 text-end">
-                <a class="nav-link active text-dark" href="{{ route('almacenamiento') }}">Ver más</a>
+                <a class="nav-link active text-white" href="{{ route('almacenamiento') }}">Ver más</a>
               </div>
             </div>
           </div>
