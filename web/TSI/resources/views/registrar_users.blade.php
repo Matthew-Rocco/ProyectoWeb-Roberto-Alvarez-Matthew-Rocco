@@ -1,12 +1,15 @@
 @extends('layouts.master')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/estilo_registrar.css') }}">
+@endsection
+
 @section('contenido')
     <!DOCTYPE html>
     <html>
 
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/estilo_registrar.css') }}">
     </head>
 
     <body>

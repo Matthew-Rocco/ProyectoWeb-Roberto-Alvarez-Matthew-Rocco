@@ -19,6 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+    @yield('css')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <title>Proyecto TSI</title>
 </head>
@@ -92,18 +93,10 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link active" style="color:white" aria-current="page"
-                                    href="{{ route('home') }}">Componentes</a>
+                                    href="{{ route('home') }}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('añadir_componentes') }}">Añadir
-                                    componentes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Mostrar
-                                    componentes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mi_lista') }}">Mis Listas</a>
+                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Componentes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" style="color:white" href="{{ route('mostrar_tienda') }}">Ver Tiendas</a>
@@ -130,6 +123,7 @@
                             @auth <!-- si esta logeado, muestra esto -->
                             <li><a class="nav-link active text-dark" href="{{ route('mi_lista') }}">Mis Listas</a></li>
                             <li><a class="nav-link active text-dark" href="{{ route('añadir_componentes') }}">Añadir Componente</a></li>
+                            <li><a class="nav-link active text-dark" href="{{ route('actualizar_componente') }}">Mis Componentes</a></li>
                             <li>
                                 <form method="POST" action="cerrar_sesion">
                                     @csrf

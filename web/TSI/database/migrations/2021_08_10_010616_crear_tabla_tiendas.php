@@ -18,6 +18,7 @@ class CrearTablaTiendas extends Migration
             $table->string("nombretienda",150);
             $table->string("descripciontienda",500);
             $table->string("linktienda",500);
+            $table->string("logo");
             $table->timestamps();
         });
     }
