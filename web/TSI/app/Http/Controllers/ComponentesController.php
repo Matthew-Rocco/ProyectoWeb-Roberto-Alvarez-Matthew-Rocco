@@ -35,11 +35,14 @@ class ComponentesController extends Controller
     public function crearComponentes(Request $request){
         $input = $request->all();
         $componente = new Componente();
-        $componente->tipocomp = $input["tipocomp"];
+        $componente->cod_tipo_comp = $input["tipocomp"];
         $componente->nombre = $input["nombre"];
         $componente->descripcion = $input["descripcion"];
-        $componente->valoracion = $input["valoracion"];
-        $componente->imagen = $input["imagen"];
+        $componente->cod_marca = $input["marca"];
+        $componente->modelo = $input["modelo"];
+        $componente->url_imagen = $input["url_imagen"];
+        //$componente->cod_imagen = $input["cod_imagen"];
+        $componente->correo_usuario = $input["correo_usuario"];
 
         /*if($archivo = $request->file('imagen')){
             $nombre=$archivo->getClientOriginalName();
@@ -74,7 +77,8 @@ class ComponentesController extends Controller
         $componente->nombre = $input["nombre"];
         $componente->precio = $input["precio"];
         $componente->descripcion = $input["descripcion"];
-        $componente->valoracion = $input["valoracion"];
+        $componente->marca = $input["marca"];
+        $componente->modelo = $input["modelo"];
         $componente->imagen = $input["imagen"];
         
         $componente->save();

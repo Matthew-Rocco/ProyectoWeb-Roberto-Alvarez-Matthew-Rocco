@@ -97,6 +97,8 @@ const iniciarActualizacion = async function() {
     document.querySelector("#tipo-actualizar").value = componente.tipocomp;
     document.querySelector("#nombre-txt").value = componente.nombre;
     document.querySelector("#precio-txt").value = componente.precio;
+    document.querySelector("#marca-select").value = componente.marca;
+    document.querySelector("#modelo-txt").value = componente.modelo;
     document.querySelector("#descripcion-txt").value = componente.descripcion;
     document.querySelector("#link-txt").value = componente.linkcomp;
 
@@ -115,8 +117,10 @@ const cargarTabla = (componentes) => {
         tdNombre.innerText = componentes[i].nombre;
         let tdTipoComp = document.createElement("td");
         tdTipoComp.innerText = componentes[i].tipocomp;
-        let tdValoracion = document.createElement("td");
-        tdValoracion.innerText = componentes[i].valoracion;
+        let tdMarca = document.createElement("td");
+        tdMarca.innerText = componentes[i].marca;
+        let tdModelo = document.createElement("td");
+        tdModelo.innerText = componentes[i].modelo;
         let tdDescripcion = document.createElement("td");
         tdDescripcion.innerText = componentes[i].descripcion;
 
@@ -152,7 +156,8 @@ const cargarTabla = (componentes) => {
 
         tr.appendChild(tdNombre);
         tr.appendChild(tdTipoComp);
-        tr.appendChild(tdValoracion);
+        tr.appendChild(tdMarca);
+        tr.appendChild(tdModelo);
         tr.appendChild(tdDescripcion);
         tr.appendChild(tdImagen);
         tr.appendChild(tdAcciones);

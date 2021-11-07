@@ -19,13 +19,15 @@ class CrearTablaComponentes extends Migration
             $table->string("descripcion",500);
             $table->string("modelo");
 
+            $table->string("url_imagen");
+
             $table->unsignedBigInteger("cod_tipo_comp");
-            $table->unsignedBigInteger("cod_imagen");
+            //$table->unsignedBigInteger("cod_imagen");
             $table->unsignedBigInteger("cod_marca");
             $table->string("correo_usuario");
 
             $table->foreign("cod_tipo_comp")->references('id')->on("tiposcomp");
-            $table->foreign("cod_imagen")->references('id')->on("imagenes");
+            //$table->foreign("cod_imagen")->references('id')->on("imagenes");
             $table->foreign("cod_marca")->references('id')->on("marcas");
             $table->foreign("correo_usuario")->references('email')->on("users");
 

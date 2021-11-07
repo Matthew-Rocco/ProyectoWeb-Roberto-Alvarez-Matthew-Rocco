@@ -6,6 +6,7 @@ use App\Http\Controllers\ComponentesController;
 use App\Http\Controllers\ListasController;
 use App\Http\Controllers\TiendasController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ImagenesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,3 +55,8 @@ Route::get('listas/buscarListaPorId', [ListasController::class, "buscarListaPorI
 Route::post('listas/post', [ListasController::class, "crearLista"]);
 Route::post('listas/actualizar', [ListasController::class, "actualizarLista"]);
 Route::post('listas/delete', [ListasController::class, "eliminarLista"]);
+
+//Imagenes
+Route::get('imagenes/get',[ImagenesController::class, "getImagenes"]);
+
+Route::post('imagenes/post',[ImagenesController::class, "crearImagen"]);

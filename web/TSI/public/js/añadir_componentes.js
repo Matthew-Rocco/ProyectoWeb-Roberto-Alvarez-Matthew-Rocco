@@ -1,4 +1,4 @@
-const cargarTiposComp = async()=>{
+const cargarTiposComp = async() => {
     let tipos = await getTiposComp();
     let tipoSelect = document.querySelector("#tipocomp-select");
     tipos.forEach(t => {
@@ -7,51 +7,61 @@ const cargarTiposComp = async()=>{
         tipoSelect.appendChild(option);
     });
 }
-document.addEventListener("DOMContentLoaded", ()=>{
-    cargarTiposComp();
-});
 
-document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
-    let tipocomp = document.querySelector("#tipocomp-select").value.trim();
+document.querySelector("#registrar-btn").addEventListener("click", async() => {
+    let tipocomp = Number(document.querySelector("#tipocomp-select").value.trim());
     let nombre = document.querySelector("#nombre-txt").value.trim();
-    let valoracion = document.querySelector("#valoracion-txt").value.trim();
+    let marca = Number(document.querySelector("#marca-select").value.trim());
+    let modelo = document.querySelector("#modelo-txt").value.trim();
     let descripcion = document.querySelector("#descripcion-txt").value.trim();
-    let imagen = document.querySelector("#imagen").value.trim();
+    let url_imagen = document.querySelector("#imagen").value.trim();
+    let correo_usuario = document.querySelector("#correo_usuario").value;
+
+
 
     let errores = [];
-    if(nombre === ""){
+    if (nombre === "") {
         errores.push("Debe ingresar un nombre");
     }
 
-    if(imagen === ""){
+    if (imagen === "") {
         errores.push("Debe ingresar una imagen");
     }
 
-    if(valoracion === ""){
-        errores.push("Debe ingresar una valoracion");
-    }else if(isNaN(valoracion)){
-        errores.push("La valoracion debe ser numerica");
-    }else if(valoracion < 0){
-        errores.push("La valoracion no debe ser negativa");
-    }else if(valoracion > 10){
-        errores.push("La valoracion debe estar entre 0 y 10");
+    if (modelo === "") {
+        errores.push("Debe ingresar un modelo");
     }
 
-    if(descripcion === ""){
+    if (descripcion === "") {
         errores.push("Debe ingresar una descripcion");
     }
 
-    if(errores.length == 0){
+    if (errores.length == 0) {
+
+        /*let imagen_ruta = {};
+        imagen_ruta.ruta = url_imagen
+
+        crearImagen(imagen_ruta);
+
+        let imagenes = await getImagenes();
+
+        let cod_imagen = imagenes.length;*/
+
+
+
         let componente = {};
         componente.tipocomp = tipocomp;
         componente.nombre = nombre;
-        componente.valoracion = valoracion;
+        componente.marca = marca;
+        componente.modelo = modelo;
         componente.descripcion = descripcion;
-        componente.imagen = imagen;
-        
+        componente.url_imagen = url_imagen;
+        //componente.cod_imagen = cod_imagen;
+        componente.correo_usuario = correo_usuario;
+
         let res = await crearComponentes(componente);
         Swal.fire("Componente Creado", "Componente creado exitosamente", "info");
-    }else{
+    } else {
         Swal.fire({
             title: "Errores de validacion",
             icon: "warning",

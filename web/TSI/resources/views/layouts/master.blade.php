@@ -1,12 +1,3 @@
-<?php
-    if (isset($_POST['enSesion']) == true) {
-        $usuario = $_POST['enSesion'];
-    }else {
-        $usuario = 0;
-    }
-?>
-
-
 <!doctype html>
 <html lang="es">
 
@@ -26,58 +17,7 @@
 
 <body>
     <header>
-        <nav class="navbar estilonavbar navbar-expand-lg navbar-light bg-gradient top-0">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ route('home') }}">
-                    <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse row gx-5" id="navbarNavAltMarkup">
-                    <div class="col-10">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" aria-current="page"
-                                    href="{{ route('home') }}">Componentes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('añadir_componentes') }}">Añadir
-                                    componentes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Mostrar
-                                    componentes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mi_lista') }}">Mis Listas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_tienda') }}">Ver Tiendas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_users') }}">Ver usuarios</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="login" src="{{ asset('img/usuario.png') }}" alt="usuario">
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="nav-link active text-dark" href="{{ route('users') }}">Iniciar Sesión</a></li>
-                            <li><a class="nav-link active text-dark" href="{{ route('registrar_users') }}">Registrarse</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
         <!-- prueba rara para hacer un navbar que siga la pantalla ewe -->
-
         <nav class="fixed-top navbar estilonavbar navbar-expand-lg navbar-light bg-gradient top-0">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">
@@ -99,10 +39,7 @@
                                 <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Componentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_tienda') }}">Ver Tiendas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_users') }}">Ver usuarios</a>
+                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_users') }}">Foro</a>
                             </li>
                         </ul>
                     </div>
@@ -143,7 +80,7 @@
         </nav>
     </header>
 
-    <main class="container-fluid">
+    <main class="container-fluid" style="margin-top: 70px;">
         @yield('contenido')
     </main>
 
