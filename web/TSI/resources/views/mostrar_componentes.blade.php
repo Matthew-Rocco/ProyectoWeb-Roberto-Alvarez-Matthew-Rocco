@@ -4,7 +4,7 @@
   <div class="row p-4">
     <div class="col-12 col-md-6 col-lg-5 mx-auto">
       <div class="card">
-        <div class="card-header colorbg texto">
+        <div class="card-header colorbg bg-gradient texto">
           <span>Filtrar</span>
         </div>
         <div class="card-body">

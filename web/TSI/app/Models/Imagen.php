@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imagen extends Model
 {
+    public $table = "imagenes";
     use HasFactory;
 }

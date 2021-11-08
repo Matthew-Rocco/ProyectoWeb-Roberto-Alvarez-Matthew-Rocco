@@ -28,7 +28,7 @@ class ComponentesController extends Controller
     public function filtrarComponentes(Request $request){
         $input = $request->all();
         $filtro = $input["filtro"];
-        $componentes = Componente::where("tipocomp", $filtro)->get();
+        $componentes = Componente::where("cod_tipo_comp", $filtro)->get();
         return $componentes;
     }
 
@@ -73,13 +73,12 @@ class ComponentesController extends Controller
         $input = $request->all();
         $id = $input["id"];
         $componente = Componente::findOrFail($id);
-        $componente->tipocomp = $input["tipocomp"];
+        $componente->cod_tipo_comp = $input["cod_tipo_comp"];
         $componente->nombre = $input["nombre"];
-        $componente->precio = $input["precio"];
-        $componente->descripcion = $input["descripcion"];
-        $componente->marca = $input["marca"];
         $componente->modelo = $input["modelo"];
-        $componente->imagen = $input["imagen"];
+        $componente->descripcion = $input["descripcion"];
+        $componente->cod_marca = $input["cod_marca"];
+        $componente->url_imagen = $input["url_imagen"];
         
         $componente->save();
         return $componente;

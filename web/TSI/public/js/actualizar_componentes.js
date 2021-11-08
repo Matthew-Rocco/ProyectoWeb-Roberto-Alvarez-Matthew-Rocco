@@ -1,15 +1,3 @@
-const cargarTiposComp = async(select) => {
-    let filtroCbx = select;
-
-    let tipos = await getTiposComp();
-    tipos.forEach(t => {
-        let option = document.createElement("option");
-        option.innerText = t;
-        option.value = t;
-        filtroCbx.appendChild(option);
-    });
-};
-
 const iniciarEliminacion = async function() {
     let id = this.idComponente;
     let resp = await Swal.fire({ title: "Esta seguro?", text: "Esta operacion es irreversible", icon: "error", showCancelButton: true });
@@ -30,37 +18,36 @@ const iniciarEliminacion = async function() {
 const actualizar = async function() {
 
     let nombre = document.querySelector("#nombre-txt").value.trim();
-    let precio = document.querySelector("#precio-txt").value.trim();
     let descripcion = document.querySelector("#descripcion-txt").value.trim();
-    let linkcomp = document.querySelector("#link-txt").value.trim();
+    let modelo = document.querySelector("#modelo-txt").value.trim();
+    let marca = document.querySelector("#marca-select").value.trim();
+    let urlimagen = document.querySelector("#url_imagen").value.trim();
 
     let errores = [];
     if (nombre === "") {
         errores.push("Debe ingresar un nombre");
     }
-    if (precio === "") {
-        errores.push("Debe ingresar un precio");
-    } else if (isNaN(precio)) {
-        errores.push("El precio debe ser numerico");
-    } else if (+precio < 0) {
-        errores.push("El precio no debe ser negativo");
-    }
     if (descripcion === "") {
         errores.push("Debe ingresar una descripción");
     }
-    if (linkcomp === "") {
-        errores.push("Debe ingresar un link");
+    if (urlimagen === "") {
+        errores.push("Debe ingresar un URL de imagen");
     }
+    if (modelo === "") {
+        errores.push("Debe ingresar un modelo");
+    }
+
 
     if (errores.length == 0) {
         let idComponente = this.idComponente;
         let componente = await buscarPorId(idComponente);
 
-        componente.tipocomp = document.querySelector("#tipo-actualizar").value;
+        componente.cod_tipo_comp = document.querySelector("#tipo-actualizar").value;
         componente.nombre = document.querySelector("#nombre-txt").value;
-        componente.precio = +document.querySelector("#precio-txt").value;
         componente.descripcion = document.querySelector("#descripcion-txt").value;
-        componente.linkcomp = document.querySelector("#link-txt").value;
+        componente.modelo = document.querySelector("#modelo-txt").value;
+        componente.cod_marca = document.querySelector("#marca-select").value;
+        componente.url_imagen = document.querySelector("#url_imagen").value;
 
         let resp = await Swal.fire({ title: "Actualizar Componente", text: "Desea actualizar el componente?", icon: "question", showCancelButton: true });
 
@@ -94,11 +81,12 @@ const iniciarActualizacion = async function() {
     //document.location.href='http://localhost:8084/TSI/public/actualizar_componente';
     let idComponente = this.idComponente;
     let componente = await buscarPorId(idComponente);
-    document.querySelector("#tipo-actualizar").value = componente.tipocomp;
+    document.querySelector("#tipo-actualizar").value = componente.cod_tipo_comp;
     document.querySelector("#nombre-txt").value = componente.nombre;
-    document.querySelector("#precio-txt").value = componente.precio;
+    document.querySelector("#modelo-txt").value = componente.modelo;
+    document.querySelector("#marca-select").value = componente.cod_marca;
     document.querySelector("#descripcion-txt").value = componente.descripcion;
-    document.querySelector("#link-txt").value = componente.linkcomp;
+    document.querySelector("#url_imagen").value = componente.url_imagen;
 
     document.querySelector("#actualizar-btn").idComponente = idComponente;
     document.querySelector("#actualizar-btn").addEventListener("click", actualizar);
@@ -109,45 +97,94 @@ const cargarTabla = (componentes) => {
     let tbody = document.querySelector("#tbody-componente");
     tbody.innerHTML = "";
     for (let i = 0; i < componentes.length; ++i) {
-        let tr = document.createElement("tr");
+        if (componentes[i].correo_usuario == document.querySelector("#correo_usuario").value) {
 
-        let tdNombre = document.createElement("td");
-        tdNombre.innerText = componentes[i].nombre;
-        let tdTipoComp = document.createElement("td");
-        tdTipoComp.innerText = componentes[i].tipocomp;
-        let tdDescripcion = document.createElement("td");
-        tdDescripcion.innerText = componentes[i].descripcion;
+            let tr = document.createElement("tr");
 
-        let tdImagen = document.createElement("td");
-        let imgImagen = document.createElement("img");
-        imgImagen.setAttribute("src", "{{asset('" + componentes[i].imagen + "')}}");
-        tdImagen.appendChild(imgImagen);
+            let tdNombre = document.createElement("td");
+            tdNombre.innerText = componentes[i].nombre;
+            let tdTipoComp = document.createElement("td");
 
-        let tdAcciones = document.createElement("td");
+            if (componentes[i].cod_tipo_comp == 1) {
+                tdTipoComp.innerText = "Gabinete";
+            } else if (componentes[i].cod_tipo_comp == 2) {
+                tdTipoComp.innerText = "Placa Madre";
+            } else if (componentes[i].cod_tipo_comp == 3) {
+                tdTipoComp.innerText = "Procesador";
+            } else if (componentes[i].cod_tipo_comp == 4) {
+                tdTipoComp.innerText = "Tarjeta de Video";
+            } else if (componentes[i].cod_tipo_comp == 5) {
+                tdTipoComp.innerText = "Almacenamiento";
+            } else if (componentes[i].cod_tipo_comp == 6) {
+                tdTipoComp.innerText = "Fuente de Poder";
+            } else if (componentes[i].cod_tipo_comp == 7) {
+                tdTipoComp.innerText = "Memoria RAM";
+            } else if (componentes[i].cod_tipo_comp == 8) {
+                tdTipoComp.innerText = "Cooler";
+            }
 
-        let botonEliminar = document.createElement("button");
-        botonEliminar.innerText = "Eliminar";
-        botonEliminar.classList.add("btn", "btn-danger");
-        botonEliminar.idComponente = componentes[i].id;
-        botonEliminar.addEventListener("click", iniciarEliminacion)
-        tdAcciones.appendChild(botonEliminar);
+            let tdModelo = document.createElement("td");
+            tdModelo.innerText = componentes[i].modelo;
 
-        let botonActualizar = document.createElement("button");
-        botonActualizar.innerText = "Actualizar";
-        botonActualizar.classList.add("btn", "btn-primary");
-        botonActualizar.idComponente = componentes[i].id;
-        botonActualizar.addEventListener("click", iniciarActualizacion);
-        tdAcciones.appendChild(botonActualizar);
+            let tdMarca = document.createElement("td");
+            if (componentes[i].cod_marca == 1) {
+                tdMarca.innerText = "Kingston";
+            } else if (componentes[i].cod_marca == 2) {
+                tdMarca.innerText = "Asus";
+            } else if (componentes[i].cod_marca == 3) {
+                tdMarca.innerText = "Crucial";
+            } else if (componentes[i].cod_marca == 4) {
+                tdMarca.innerText = "SanDisk";
+            } else if (componentes[i].cod_marca == 5) {
+                tdMarca.innerText = "Seagate";
+            } else if (componentes[i].cod_marca == 6) {
+                tdMarca.innerText = "Toshiba";
+            } else if (componentes[i].cod_marca == 7) {
+                tdMarca.innerText = "WD";
+            } else if (componentes[i].cod_marca == 8) {
+                tdMarca.innerText = "Transcend";
+            } else if (componentes[i].cod_marca == 9) {
+                tdMarca.innerText = "Corsair";
+            } else if (componentes[i].cod_marca == 10) {
+                tdMarca.innerText = "Generica";
+            }
 
 
-        tr.appendChild(tdNombre);
-        tr.appendChild(tdTipoComp);
-        tr.appendChild(tdDescripcion);
-        tr.appendChild(tdImagen);
-        tr.appendChild(tdAcciones);
+            let tdDescripcion = document.createElement("td");
+            tdDescripcion.innerText = componentes[i].descripcion;
 
-        tbody.appendChild(tr);
+            let tdImagen = document.createElement("td");
+            tdImagen.innerText = componentes[i].url_imagen;
 
+            let tdAcciones = document.createElement("td");
+
+            let botonEliminar = document.createElement("button");
+            botonEliminar.innerText = "Eliminar";
+            botonEliminar.classList.add("btn", "btn-danger");
+            botonEliminar.idComponente = componentes[i].id;
+            botonEliminar.addEventListener("click", iniciarEliminacion)
+            tdAcciones.appendChild(botonEliminar);
+
+            let botonActualizar = document.createElement("button");
+            botonActualizar.innerText = "Actualizar";
+            botonActualizar.classList.add("btn", "btn-primary");
+            botonActualizar.idComponente = componentes[i].id;
+            botonActualizar.addEventListener("click", iniciarActualizacion);
+            tdAcciones.appendChild(botonActualizar);
+
+
+            tr.appendChild(tdNombre);
+            tr.appendChild(tdTipoComp);
+            tr.appendChild(tdModelo);
+            tr.appendChild(tdMarca);
+            tr.appendChild(tdDescripcion);
+            tr.appendChild(tdImagen);
+            tr.appendChild(tdAcciones);
+
+            tbody.appendChild(tr);
+        } else {
+            continue;
+        }
 
     }
 };
@@ -159,8 +196,6 @@ document.querySelector("#filtro-cbx").addEventListener("change", async() => {
 });
 
 document.addEventListener("DOMContentLoaded", async() => {
-    await cargarTiposComp(document.querySelector("#filtro-cbx"));
-    await cargarTiposComp(document.querySelector("#tipo-actualizar"));
     let componentes = await getComponentes();
     cargarTabla(componentes);
 });

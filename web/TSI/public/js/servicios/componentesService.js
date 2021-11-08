@@ -1,15 +1,14 @@
-
-const getComponentes = async (filtro ="todos")=>{
+const getComponentes = async(filtro = "todos") => {
     let resp;
-    if(filtro=="todos"){
+    if (filtro == "todos") {
         resp = await axios.get("api/componentes/get");
-    }else{
+    } else {
         resp = await axios.get(`api/componentes/filtrar?filtro=${filtro}`);
     }
     return resp.data;
 };
 
-const crearComponentes = async (componente)=>{
+const crearComponentes = async(componente) => {
     let resp = await axios.post("api/componentes/post", componente, {
         headers: {
             'Content-Type': 'application/json'
@@ -18,34 +17,34 @@ const crearComponentes = async (componente)=>{
     return resp.data;
 };
 
-const eliminarComponentes = async (id)=>{
-    try{
-        let resp = await axios.post("api/componentes/delete", {id}, {
+const eliminarComponentes = async(id) => {
+    try {
+        let resp = await axios.post("api/componentes/delete", { id }, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         return resp.data == "ok";
-    }catch(e){
+    } catch (e) {
         return false;
     }
 };
 
 
-const actualizarComponente = async (componente)=>{
-    try{
+const actualizarComponente = async(componente) => {
+    try {
         let resp = await axios.post("api/componentes/actualizar", componente, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         return resp.data;
-    }catch(e){
+    } catch (e) {
         return false;
     }
 };
 
-const buscarPorId = async (id)=>{
+const buscarPorId = async(id) => {
     let resp = await axios.get(`api/componentes/buscarPorId?id=${id}`);
     return resp.data;
 };
