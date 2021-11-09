@@ -17,23 +17,40 @@ document.querySelector("#registrar-btn").addEventListener("click", async() => {
     let url_imagen = document.querySelector("#imagen").value.trim();
     let correo_usuario = document.querySelector("#correo_usuario").value;
 
-
+    let duplicado = 0;
 
     let errores = [];
     if (nombre === "") {
         errores.push("Debe ingresar un nombre");
+    } else {
+        let componentes = await getComponentes();
+        let nombreEncontrado = componentes.find(c => c.nombre.toLowerCase() == nombre.toLowerCase());
+        if (nombreEncontrado != undefined) {
+            duplicado++;
+        }
     }
 
-    if (imagen === "") {
+    if (url_imagen === "") {
         errores.push("Debe ingresar una imagen");
     }
 
     if (modelo === "") {
         errores.push("Debe ingresar un modelo");
+    } else {
+        let componentes = await getComponentes();
+        let modeloEncontrado = componentes.find(c => c.modelo.toLowerCase() == modelo.toLowerCase());
+        let marcaEncontrado = componentes.find(c => c.cod_marca == marca);
+        if (modeloEncontrado != undefined && marcaEncontrado != undefined) {
+            duplicado++;
+        }
     }
 
     if (descripcion === "") {
         errores.push("Debe ingresar una descripcion");
+    }
+
+    if (duplicado > 0) {
+        errores.push("El componente ya existe");
     }
 
     if (errores.length == 0) {
