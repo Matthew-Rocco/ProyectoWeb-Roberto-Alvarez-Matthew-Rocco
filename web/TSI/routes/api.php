@@ -26,7 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('tipocomp/get', [ComponentesController::class, "getTipoComp"]);
 Route::get('componentes/get',[ComponentesController::class, "getComponentes"]);
 Route::get('componentes/filtrar', [ComponentesController::class, "filtrarComponentes"]);
-Route::get('componentes/filtrarU', [ComponentesController::class, "filtrarComponentesU"]);
+Route::get('componentes/filtrarmarcas', [ComponentesController::class, "filtrarComponentesMarca"]);
 Route::get('componentes/buscarPorId', [ComponentesController::class, "buscarPorId"]);
 
 Route::post('componentes/post',[ComponentesController::class, "crearComponentes"]);

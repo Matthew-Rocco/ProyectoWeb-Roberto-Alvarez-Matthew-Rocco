@@ -8,6 +8,16 @@ const getComponentes = async(filtro = "todos") => {
     return resp.data;
 };
 
+const getComponentesMarcas = async(filtro = "todos") => {
+    let resp;
+    if (filtro == "todos") {
+        resp = await axios.get("api/componentes/get");
+    } else {
+        resp = await axios.get(`api/componentes/filtrarmarcas?filtro=${filtro}`);
+    }
+    return resp.data;
+};
+
 const crearComponentes = async(componente) => {
     let resp = await axios.post("api/componentes/post", componente, {
         headers: {

@@ -31,6 +31,13 @@ class ComponentesController extends Controller
         $componentes = Componente::where("cod_tipo_comp", $filtro)->get();
         return $componentes;
     }
+    
+    public function filtrarComponentesMarca(Request $request){
+        $input = $request->all();
+        $filtromarca = $input["filtro"];
+        $componentes = Componente::where("cod_marca", $filtromarca)->get();
+        return $componentes;
+    }
 
     public function crearComponentes(Request $request){
         $input = $request->all();

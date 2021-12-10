@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tipocomp extends Model
 {
     use HasFactory;
+    
     protected $table = 'tiposcomp';
+
+    public function componentes(){
+        return $this->hasMany(Componente::class);
+    }
 }

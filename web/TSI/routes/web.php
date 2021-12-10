@@ -26,6 +26,7 @@ Route::view("/mostrar_componentes","mostrar_componentes")->name("mostrar_compone
 Route::view("/actualizar_componente","actualizar_componente")->name("actualizar_componente");
 Route::view("/actualizar_lista","actualizar_lista")->name("actualizar_lista");
 Route::view("/almacenamiento","almacenamiento")->name("almacenamiento");
+Route::view("/foro","foro")->name("foro");
 
 
 

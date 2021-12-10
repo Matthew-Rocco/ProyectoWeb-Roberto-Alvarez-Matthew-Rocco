@@ -195,6 +195,12 @@ document.querySelector("#filtro-cbx").addEventListener("change", async() => {
     cargarTabla(componentes);
 });
 
+/*document.querySelector("#filtro-cbx").addEventListener("change", async() => {
+    let filtro = document.querySelector("#filtro-cbx").value;
+    let componentes = await getComponentes(filtro);
+    cargarTabla(componentes);
+});*/
+
 document.addEventListener("DOMContentLoaded", async() => {
     let componentes = await getComponentes();
     cargarTabla(componentes);

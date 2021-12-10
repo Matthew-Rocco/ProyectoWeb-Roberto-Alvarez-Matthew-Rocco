@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imagen extends Model
 {
-    public $table = "imagenes";
     use HasFactory;
+    
+    protected $table = 'imagenes';
+
+    public function hilo_foro(){
+        return $this->belongsTo(Hiloforo::class);
+    }
+    public function resp_foro(){
+        return $this->belongsTo(Respforo::class);
+    }
+    public function componente(){
+        return $this->belongsTo(Componente::class);
+    }
 }

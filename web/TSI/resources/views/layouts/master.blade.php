@@ -39,8 +39,13 @@
                                 <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Componentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" style="color:white" href="{{ route('mostrar_users') }}">Foro</a>
+                                <a class="nav-link active" style="color:white" href="{{ route('foro') }}">Foro</a>
                             </li>
+                            @auth
+                                <li><a class="nav-link active" style="color:white" href="{{ route('mi_lista') }}">Mis Listas</a></li>
+                                <li><a class="nav-link active" style="color:white" href="{{ route('añadir_componentes') }}">Añadir Componente</a></li>
+                                <li><a class="nav-link active" style="color:white" href="{{ route('actualizar_componente') }}">Mis Componentes</a></li>
+                            @endauth
                         </ul>
                     </div>
                     <div class="col nav-item dropdown">
@@ -58,9 +63,11 @@
                             @endguest
 
                             @auth <!-- si esta logeado, muestra esto -->
+                            <!--
                             <li><a class="nav-link active text-dark" href="{{ route('mi_lista') }}">Mis Listas</a></li>
                             <li><a class="nav-link active text-dark" href="{{ route('añadir_componentes') }}">Añadir Componente</a></li>
                             <li><a class="nav-link active text-dark" href="{{ route('actualizar_componente') }}">Mis Componentes</a></li>
+                            -->
                             <li>
                                 <form method="POST" action="cerrar_sesion">
                                     @csrf
