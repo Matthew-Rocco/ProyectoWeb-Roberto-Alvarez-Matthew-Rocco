@@ -12,9 +12,10 @@ class DetalleListaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getDetalleLista()
     {
-        //
+        $detalles = Detallelista::all();
+        return $detalles;
     }
 
     /**

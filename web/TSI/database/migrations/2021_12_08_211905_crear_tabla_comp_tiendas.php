@@ -21,8 +21,8 @@ class CrearTablaCompTiendas extends Migration
             $table->unsignedInteger("precio_comp");
             $table->string("link_comp");
 
-            $table->foreign("cod_comp")->references('id')->on("componentes");
-            $table->foreign("cod_tienda")->references('id')->on("tiendas");
+            $table->foreign("cod_comp")->references('id')->on("componentes")->onDelete('cascade');
+            $table->foreign("cod_tienda")->references('id')->on("tiendas")->onDelete('cascade');
             $table->foreign("correo_usuario")->references('email')->on("users");
 
             $table->timestamps();

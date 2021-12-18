@@ -3,6 +3,11 @@ const getImagenes = async() => {
     return resp.data;
 };
 
+const buscarImagenPorIdComp = async(id) => {
+    let resp = await axios.get(`api/imagenes/buscarImagenPorIdComp?id=${id}`);
+    return resp.data;
+};
+
 const crearImagen = async(imagen) => {
     let resp = await axios.post("api/imagenes/post", imagen, {
         headers: {

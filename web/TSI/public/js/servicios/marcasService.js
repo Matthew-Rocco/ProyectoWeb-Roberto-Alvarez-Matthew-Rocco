@@ -1,4 +1,5 @@
-const getTiposComp = async ()=>{
-    let resultado = await axios.get("api/tipocomp/get");
-    return resultado.data;
-}
+const getMarcas = async() => {
+    let resp;
+    resp = await axios.get("api/marcas/get");
+    return resp.data;
+};

@@ -18,8 +18,8 @@ class CrearTablaCategoriaForo extends Migration
             $table->unsignedBigInteger('cod_foro');
             $table->unsignedBigInteger('cod_categoria');
 
-            $table->foreign("cod_foro")->references('id')->on("hilo_foros");
-            $table->foreign("cod_categoria")->references('id')->on("categorias");
+            $table->foreign("cod_foro")->references('id')->on("hilo_foros")->onDelete('cascade');
+            $table->foreign("cod_categoria")->references('id')->on("categorias")->onDelete('cascade');
 
             $table->timestamps();
         });

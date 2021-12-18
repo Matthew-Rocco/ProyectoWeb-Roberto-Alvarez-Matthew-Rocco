@@ -20,8 +20,8 @@ class CrearTablaCaracteristicasComp extends Migration
             $table->string('valor_carac');
             $table->string('unidad');
 
-            $table->foreign("cod_comp")->references('id')->on("componentes");
-            $table->foreign("cod_carac")->references('id')->on("caracteristicas");
+            $table->foreign("cod_comp")->references('id')->on("componentes")->onDelete('cascade');
+            $table->foreign("cod_carac")->references('id')->on("caracteristicas")->onDelete('cascade');
 
             $table->timestamps();
         });

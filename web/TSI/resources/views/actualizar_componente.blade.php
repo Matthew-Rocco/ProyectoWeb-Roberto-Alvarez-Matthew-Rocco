@@ -9,16 +9,8 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="tipo-actualizar" class="form-label">Tipo de Componente</label>
-                        <select class="form-select" id="tipo-actualizar">
-                            <option value="1">Gabinete</option>
-                            <option value="2">Placa Madre</option>
-                            <option value="3">Procesador</option>
-                            <option value="4">Tarjeta de Video</option>
-                            <option value="5">Almacenamiento</option>
-                            <option value="6">Fuente de Poder</option>
-                            <option value="7">Memoria RAM</option>
-                            <option value="8">Cooler</option>
+                        <label for="tiposcomp-select" class="form-label">Tipo de Componente</label>
+                        <select class="form-select" id="tiposcomp-select">
                         </select>
                     </div>
                     <div class="mb-3">
@@ -31,24 +23,10 @@
                     </div>
                     <label for="marca-select" class="form-label">Marca</label>
                     <select class="form-select" id="marca-select">
-                        <option value="1">Kingston</option>
-                        <option value="2">Asus</option>
-                        <option value="3">Crucial</option>
-                        <option value="4">Sandisk</option>
-                        <option value="5">Seagate</option>
-                        <option value="6">Toshiba</option>
-                        <option value="7">WD</option>
-                        <option value="8">Transcend</option>
-                        <option value="9">Corsair</option>
-                        <option value="10">Generica</option>
                     </select>
                     <div class="mb-3">
                         <label for="descripcion-txt" class="form-label">Descripción</label>
                         <textarea id="descripcion-txt" class="form-control"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="url_imagen" class="form-label">URL Imagen</label>
-                        <input type="text" id="url_imagen" class="form-control">
                     </div>
                 </div>
                 <div class="card-footer d-grip gap-1">
@@ -64,16 +42,8 @@
                             <span>Filtrar</span>
                         </div>
                         <div class="card-body">
-                            <select class="form-select" id="filtro-cbx">
+                            <select class="form-select" id="tipocomp-select">
                                 <option value="todos">Todos</option>
-                                <option value="1">Gabinete</option>
-                                <option value="2">Placa Madre</option>
-                                <option value="3">Procesador</option>
-                                <option value="4">Tarjeta de Video</option>
-                                <option value="5">Almacenamiento</option>
-                                <option value="6">Fuente de Poder</option>
-                                <option value="7">Memoria RAM</option>
-                                <option value="8">Cooler</option>
                             </select>
                             <input type="text" class="form-control d-none" id="correo_usuario" value="{{auth()->user()->email}}">
                         </div>
@@ -90,7 +60,6 @@
                                 <td>Modelo</td>
                                 <td>Marca</td>  
                                 <td>Descripcion</td>
-                                <td>Url Imagen</td>
                                 <td>Acciones</td>
                             </tr>
                         </thead>
@@ -108,5 +77,8 @@
 @section('javascript')
     <script src="{{ asset('js/servicios/componentesService.js') }}"></script>
     <script src="{{ asset('js/servicios/marcasService.js') }}"></script>
+    <script src="{{asset('js/servicios/tiposcompService.js')}}"></script>
     <script src="{{ asset('js/actualizar_componentes.js') }}"></script>
+    <script src="{{asset('js/tipos_comp.js')}}"></script>
+    <script src="{{asset('js/marcas.js')}}"></script>
 @endsection

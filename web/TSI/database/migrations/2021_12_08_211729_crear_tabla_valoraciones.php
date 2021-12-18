@@ -21,7 +21,7 @@ class CrearTablaValoraciones extends Migration
             $table->unsignedInteger('puntos');
             $table->DateTime("fecha");
 
-            $table->foreign("cod_comp")->references('id')->on("componentes");
+            $table->foreign("cod_comp")->references('id')->on("componentes")->onDelete('cascade');
             $table->foreign("correo_user")->references('email')->on("users");
 
             $table->timestamps();

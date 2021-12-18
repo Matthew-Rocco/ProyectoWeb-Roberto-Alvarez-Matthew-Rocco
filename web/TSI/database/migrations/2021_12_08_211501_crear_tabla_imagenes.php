@@ -20,9 +20,9 @@ class CrearTablaImagenes extends Migration
             $table->unsignedBigInteger('cod_resp_foro')->nullable();
             $table->unsignedBigInteger('cod_comp')->nullable();
 
-            $table->foreign("cod_hilo_foro")->references('id')->on("hilo_foros");
-            $table->foreign("cod_resp_foro")->references('id')->on("resp_foros");
-            $table->foreign("cod_comp")->references('id')->on("componentes");
+            $table->foreign("cod_hilo_foro")->references('id')->on("hilo_foros")->onDelete('cascade');
+            $table->foreign("cod_resp_foro")->references('id')->on("resp_foros")->onDelete('cascade');
+            $table->foreign("cod_comp")->references('id')->on("componentes")->onDelete('cascade');
 
             $table->timestamps();
         });

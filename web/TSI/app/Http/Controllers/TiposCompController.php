@@ -12,9 +12,10 @@ class TiposCompController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getTipoComp()
     {
-        //
+        $tiposcomp = Tipocomp::all();
+        return $tiposcomp;
     }
 
     /**

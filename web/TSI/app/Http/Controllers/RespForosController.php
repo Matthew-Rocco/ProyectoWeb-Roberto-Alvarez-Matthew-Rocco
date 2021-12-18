@@ -12,9 +12,10 @@ class RespForosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getRespForo()
     {
-        //
+        $respforo = Respforo::all();
+        return $respforo;
     }
 
     /**

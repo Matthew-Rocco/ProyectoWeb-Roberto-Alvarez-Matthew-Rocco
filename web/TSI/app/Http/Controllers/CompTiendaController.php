@@ -12,9 +12,10 @@ class CompTiendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getCompTienda()
     {
-        //
+        $comptienda = Comptienda::all();
+        return $comptienda;
     }
 
     /**

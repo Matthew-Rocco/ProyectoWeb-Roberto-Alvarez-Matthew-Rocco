@@ -12,9 +12,11 @@ class MarcasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getMarcas()
     {
-        //
+        $marcas = Marca::all();
+        return $marcas;
+        //return Marca::orderBy('nom_marca')->get();
     }
 
     /**

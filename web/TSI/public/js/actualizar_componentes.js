@@ -21,7 +21,6 @@ const actualizar = async function() {
     let descripcion = document.querySelector("#descripcion-txt").value.trim();
     let modelo = document.querySelector("#modelo-txt").value.trim();
     let marca = document.querySelector("#marca-select").value.trim();
-    let urlimagen = document.querySelector("#url_imagen").value.trim();
 
     let errores = [];
     if (nombre === "") {
@@ -29,9 +28,6 @@ const actualizar = async function() {
     }
     if (descripcion === "") {
         errores.push("Debe ingresar una descripción");
-    }
-    if (urlimagen === "") {
-        errores.push("Debe ingresar un URL de imagen");
     }
     if (modelo === "") {
         errores.push("Debe ingresar un modelo");
@@ -47,7 +43,6 @@ const actualizar = async function() {
         componente.descripcion = document.querySelector("#descripcion-txt").value;
         componente.modelo = document.querySelector("#modelo-txt").value;
         componente.cod_marca = document.querySelector("#marca-select").value;
-        componente.url_imagen = document.querySelector("#url_imagen").value;
 
         let resp = await Swal.fire({ title: "Actualizar Componente", text: "Desea actualizar el componente?", icon: "question", showCancelButton: true });
 
@@ -81,12 +76,11 @@ const iniciarActualizacion = async function() {
     //document.location.href='http://localhost:8084/TSI/public/actualizar_componente';
     let idComponente = this.idComponente;
     let componente = await buscarPorId(idComponente);
-    document.querySelector("#tipo-actualizar").value = componente.cod_tipo_comp;
+    document.querySelector("#tiposcomp-select").value = componente.cod_tipo_comp;
     document.querySelector("#nombre-txt").value = componente.nombre;
     document.querySelector("#modelo-txt").value = componente.modelo;
     document.querySelector("#marca-select").value = componente.cod_marca;
     document.querySelector("#descripcion-txt").value = componente.descripcion;
-    document.querySelector("#url_imagen").value = componente.url_imagen;
 
     document.querySelector("#actualizar-btn").idComponente = idComponente;
     document.querySelector("#actualizar-btn").addEventListener("click", actualizar);
@@ -153,9 +147,6 @@ const cargarTabla = (componentes) => {
             let tdDescripcion = document.createElement("td");
             tdDescripcion.innerText = componentes[i].descripcion;
 
-            let tdImagen = document.createElement("td");
-            tdImagen.innerText = componentes[i].url_imagen;
-
             let tdAcciones = document.createElement("td");
 
             let botonEliminar = document.createElement("button");
@@ -178,7 +169,6 @@ const cargarTabla = (componentes) => {
             tr.appendChild(tdModelo);
             tr.appendChild(tdMarca);
             tr.appendChild(tdDescripcion);
-            tr.appendChild(tdImagen);
             tr.appendChild(tdAcciones);
 
             tbody.appendChild(tr);
@@ -189,8 +179,8 @@ const cargarTabla = (componentes) => {
     }
 };
 
-document.querySelector("#filtro-cbx").addEventListener("change", async() => {
-    let filtro = document.querySelector("#filtro-cbx").value;
+document.querySelector("#tiposcomp-select").addEventListener("change", async() => {
+    let filtro = document.querySelector("#tiposcomp-select").value;
     let componentes = await getComponentes(filtro);
     cargarTabla(componentes);
 });
@@ -204,4 +194,8 @@ document.querySelector("#filtro-cbx").addEventListener("change", async() => {
 document.addEventListener("DOMContentLoaded", async() => {
     let componentes = await getComponentes();
     cargarTabla(componentes);
+
+    await cargarTipoComp();
+    await cargarTiposComp();
+    await cargarMarcas();
 });

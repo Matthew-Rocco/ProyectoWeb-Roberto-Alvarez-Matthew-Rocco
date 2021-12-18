@@ -6,20 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Componente;
 class ComponentesController extends Controller
 {
-    public function getTipoComp(){
-        $tipoComp = array();
-        $tipoComp[] = "Gabinete";
-        $tipoComp[] = "Placa Madre";
-        $tipoComp[] = "Procesador";
-        $tipoComp[] = "Tarjeta de Video";
-        $tipoComp[] = "Almacenamiento";
-        $tipoComp[] = "Fuente de Poder";
-        $tipoComp[] = "Memoria RAM";
-        $tipoComp[] = "Cooler";
-
-        return $tipoComp;
-    }
-
     public function getComponentes(){
         $componentes = Componente::all();
         return $componentes;
@@ -47,7 +33,7 @@ class ComponentesController extends Controller
         $componente->descripcion = $input["descripcion"];
         $componente->cod_marca = $input["marca"];
         $componente->modelo = $input["modelo"];
-        $componente->url_imagen = $input["url_imagen"];
+        //$componente->url_imagen = $input["url_imagen"];
         //$componente->cod_imagen = $input["cod_imagen"];
         $componente->correo_usuario = $input["correo_usuario"];
 
@@ -85,7 +71,7 @@ class ComponentesController extends Controller
         $componente->modelo = $input["modelo"];
         $componente->descripcion = $input["descripcion"];
         $componente->cod_marca = $input["cod_marca"];
-        $componente->url_imagen = $input["url_imagen"];
+        //$componente->url_imagen = $input["url_imagen"];
         
         $componente->save();
         return $componente;

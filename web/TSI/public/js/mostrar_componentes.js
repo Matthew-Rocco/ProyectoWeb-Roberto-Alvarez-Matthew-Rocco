@@ -1,15 +1,3 @@
-const cargarTiposComp = async(select) => {
-    let filtroCbx = select;
-
-    let tipos = await getTiposComp();
-    tipos.forEach(t => {
-        let option = document.createElement("option");
-        option.innerText = t;
-        option.value = t;
-        filtroCbx.appendChild(option);
-    });
-};
-
 const iniciarEliminacion = async function() {
     let id = this.idComponente;
     let resp = await Swal.fire({ title: "Esta seguro?", text: "Esta operacion es irreversible", icon: "error", showCancelButton: true });
@@ -107,7 +95,13 @@ const iniciarActualizacion = async function() {
 };
 
 
-const cargarTabla = (componentes) => {
+const buscarImagen = async function(id) {
+    let imagen = await buscarPorIdComp(id);
+    let ruta = imagen['ruta'];
+    return ruta;
+}
+
+const cargarTabla = (componentes, imagenes) => {
     /*let tbody = document.querySelector("#tbody-componente");
     tbody.innerHTML = "";*/
     let cuerpo = document.querySelector("#cuerpo");
@@ -182,11 +176,22 @@ const cargarTabla = (componentes) => {
 
         tbody.appendChild(tr);*/
 
+        console.log(imagenes[i].ruta)
+        for (let j = 0; j < imagenes.length; ++j) {
+            if ([imagenes[j].cod_comp] == componentes[j].id) {
+                ruta = imagenes[j].ruta;
+            } else {
+                ruta = "https://e7.pngegg.com/pngimages/829/733/png-clipart-logo-brand-product-trademark-font-not-found-logo-brand.png";
+            }
+        }
+        //let imagen = buscarImagen(componentes[i].id);
+        //console.log(imagen);
+
         const cuerpocomp = document.createElement("div");
         cuerpocomp.setAttribute("class", "col-3 col-md-3 col-lg-3 mb-2");
         cuerpocomp.innerHTML = `
             <div class="card" style="width: 18rem;">
-                <img src="${componentes[i].url_imagen}" alt="foto_componente">
+                <img src="${ruta}" alt="foto_componente">
                 <div class="card-body">
                     <ul class="navbar-nav">
                         <li><p>${componentes[i].nombre}</p></li>
@@ -203,25 +208,26 @@ const cargarTabla = (componentes) => {
     }
 };
 
-document.querySelector("#filtro-cbx").addEventListener("change", async() => {
-    let filtro = document.querySelector("#filtro-cbx").value;
+document.querySelector("#tipocomp-select").addEventListener("change", async() => {
+    let filtro = document.querySelector("#tipocomp-select").value;
     let componentes = await getComponentes(filtro);
     cargarTabla(componentes);
-    let filtrom = document.querySelector("#filtromarca-cbx");
+    let filtrom = document.querySelector("#marca-select");
     filtrom.value = "todos";
 });
 
-document.querySelector("#filtromarca-cbx").addEventListener("change", async() => {
-    let filtromarca = document.querySelector("#filtromarca-cbx").value;
+document.querySelector("#marca-select").addEventListener("change", async() => {
+    let filtromarca = document.querySelector("#marca-select").value;
     let componentesmarca = await getComponentesMarcas(filtromarca);
     cargarTabla(componentesmarca);
-    let filtrot = document.querySelector("#filtro-cbx");
+    let filtrot = document.querySelector("#tipocomp-select");
     filtrot.value = "todos";
 });
 
 document.addEventListener("DOMContentLoaded", async() => {
-    //await cargarTiposComp(document.querySelector("#filtro-cbx"));
-    //await cargarTiposComp(document.querySelector("#tipo-actualizar"));
+    await cargarTipoComp();
+    await cargarMarcas();
     let componentes = await getComponentes();
-    cargarTabla(componentes);
+    let imagenes = await getImagenes();
+    cargarTabla(componentes, imagenes);
 });

@@ -1,13 +1,3 @@
-const cargarTiposComp = async() => {
-    let tipos = await getTiposComp();
-    let tipoSelect = document.querySelector("#tipocomp-select");
-    tipos.forEach(t => {
-        let option = document.createElement("option");
-        option.innerText = t;
-        tipoSelect.appendChild(option);
-    });
-}
-
 document.querySelector("#registrar-btn").addEventListener("click", async() => {
     let tipocomp = Number(document.querySelector("#tipocomp-select").value.trim());
     let nombre = document.querySelector("#nombre-txt").value.trim();
@@ -53,6 +43,7 @@ document.querySelector("#registrar-btn").addEventListener("click", async() => {
         errores.push("El componente ya existe");
     }
 
+
     if (errores.length == 0) {
 
         /*let imagen_ruta = {};
@@ -72,11 +63,27 @@ document.querySelector("#registrar-btn").addEventListener("click", async() => {
         componente.marca = marca;
         componente.modelo = modelo;
         componente.descripcion = descripcion;
-        componente.url_imagen = url_imagen;
+        //componente.url_imagen = url_imagen;
         //componente.cod_imagen = cod_imagen;
         componente.correo_usuario = correo_usuario;
 
+
         let res = await crearComponentes(componente);
+
+        let comp = await getComponentes();
+        numcomp = comp.length - 1; //1
+        comp = comp[numcomp]["id"];
+
+        guardarCaracComp(comp);
+
+        let imagen = {};
+        imagen.ruta = url_imagen;
+        imagen.cod_comp = comp;
+        imagen.cod_hilo_foro = null;
+        imagen.cod_resp_foro = null;
+
+        let resp = await crearImagen(imagen);
+
         Swal.fire("Componente Creado", "Componente creado exitosamente", "info");
     } else {
         Swal.fire({
@@ -85,4 +92,9 @@ document.querySelector("#registrar-btn").addEventListener("click", async() => {
             html: errores.join("<br />")
         });
     }
+});
+
+document.addEventListener("DOMContentLoaded", async() => {
+    await cargarTipoComp();
+    await cargarMarcas();
 });

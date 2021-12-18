@@ -155,5 +155,7 @@
   </script>
   <script src="{{asset('js/servicios/componentesService.js')}}"></script>
   <script src="{{asset('js/servicios/listasService.js')}}"></script>
+  <script src="{{asset('js/servicios/marcasService.js')}}"></script>
+  <script src="{{asset('js/servicios/tiposcompService.js')}}"></script>
   <script src="{{asset('js/mi_lista.js')}}"></script>
 @endsection

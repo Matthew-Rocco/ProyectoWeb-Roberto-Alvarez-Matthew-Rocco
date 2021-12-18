@@ -12,9 +12,10 @@ class CaracteristicasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getCaracteristicas()
     {
-        //
+        $caracteristicas = Caracteristica::all();
+        return $caracteristicas;
     }
 
     /**

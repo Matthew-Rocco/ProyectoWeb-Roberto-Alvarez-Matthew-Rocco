@@ -20,7 +20,7 @@ class CrearTablaRespForo extends Migration
             $table->string('descripcion',500);
             $table->DateTime("fecha");
 
-            $table->foreign("cod_foro")->references('id')->on("hilo_foros");
+            $table->foreign("cod_foro")->references('id')->on("hilo_foros")->onDelete('cascade');
             $table->foreign("correo_user")->references('email')->on("users");
 
             $table->timestamps();

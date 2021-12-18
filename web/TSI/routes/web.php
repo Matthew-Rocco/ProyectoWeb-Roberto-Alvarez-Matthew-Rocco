@@ -28,8 +28,6 @@ Route::view("/actualizar_lista","actualizar_lista")->name("actualizar_lista");
 Route::view("/almacenamiento","almacenamiento")->name("almacenamiento");
 Route::view("/foro","foro")->name("foro");
 
-
-
 Route::get('registrar_usuarios', [UsersController::class, "crear_usuario"])->middleware('guest');
 Route::post('registrar_usuarios', [UsersController::class, "guardar_usuario"])->middleware('guest');
 

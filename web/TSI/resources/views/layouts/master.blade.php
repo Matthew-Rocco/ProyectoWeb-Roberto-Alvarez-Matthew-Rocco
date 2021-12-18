@@ -45,6 +45,11 @@
                                 <li><a class="nav-link active" style="color:white" href="{{ route('mi_lista') }}">Mis Listas</a></li>
                                 <li><a class="nav-link active" style="color:white" href="{{ route('añadir_componentes') }}">Añadir Componente</a></li>
                                 <li><a class="nav-link active" style="color:white" href="{{ route('actualizar_componente') }}">Mis Componentes</a></li>
+    
+                                @if ("{{auth()->user()->email}}" == "matt.rt30@gmail.com")
+                                    <li><h1>Admin</h1></li>
+                                @endif
+                            
                             @endauth
                         </ul>
                     </div>

@@ -18,8 +18,8 @@ class CrearTablaDetalleListas extends Migration
             $table->unsignedBigInteger('cod_lista');
             $table->string('cod_comptienda');
 
-            $table->foreign("cod_lista")->references('id')->on("listas");
-            $table->foreign("cod_comptienda")->references('cod_comp_tienda')->on("comp_tiendas");
+            $table->foreign("cod_lista")->references('id')->on("listas")->onDelete('cascade');
+            $table->foreign("cod_comptienda")->references('cod_comp_tienda')->on("comp_tiendas")->onDelete('cascade');
 
             $table->timestamps();
         });

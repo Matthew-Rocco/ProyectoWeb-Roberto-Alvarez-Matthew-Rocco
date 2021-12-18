@@ -8,16 +8,8 @@
                     <span>Filtrar por Tipo</span>
                 </div>
                 <div class="card-body">
-                    <select class="form-select" id="filtro-cbx">
+                    <select class="form-select" id="tipocomp-select">
                         <option value="todos">Todos</option>
-                        <option value="1">Gabinete</option>
-                        <option value="2">Placa Madre</option>
-                        <option value="3">Procesador</option>
-                        <option value="4">Tarjeta de Video</option>
-                        <option value="5">Almacenamiento</option>
-                        <option value="6">Fuente de Poder</option>
-                        <option value="7">Memoria RAM</option>
-                        <option value="8">Cooler</option>
                     </select>
                 </div>
             </div>
@@ -28,18 +20,8 @@
                     <span>Filtrar por Marca</span>
                 </div>
                 <div class="card-body">
-                    <select class="form-select" id="filtromarca-cbx">
+                    <select class="form-select" id="marca-select">
                         <option value="todos">Todos</option>
-                        <option value="1">Kingston</option>
-                        <option value="2">Asus</option>
-                        <option value="3">Crucial</option>
-                        <option value="4">SanDisk</option>
-                        <option value="5">Seagate</option>
-                        <option value="6">Toshiba</option>
-                        <option value="7">WD</option>
-                        <option value="8">Transcend</option>
-                        <option value="9">Corsair</option>
-                        <option value="10">Generica</option>
                     </select>
                 </div>
             </div>
@@ -73,5 +55,9 @@
 @section('javascript')
     <script src="{{ asset('js/servicios/componentesService.js') }}"></script>
     <script src="{{ asset('js/servicios/marcasService.js') }}"></script>
+    <script src="{{asset('js/servicios/tiposcompService.js')}}"></script>
+    <script src="{{asset('js/servicios/imagenesService.js')}}"></script>
     <script src="{{ asset('js/mostrar_componentes.js') }}"></script>
+    <script src="{{asset('js/tipos_comp.js')}}"></script>
+    <script src="{{asset('js/marcas.js')}}"></script>
 @endsection

@@ -7,79 +7,29 @@ use Illuminate\Http\Request;
 
 class CaracteristicaCompController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function getCaracComp()
     {
-        //
+        $caracteristicacomp = Caraccomp::all();
+        return $caracteristicacomp;
+    }
+    
+    public function buscarCaracPorIdComp(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $caraccomp = Caraccomp::where('cod_comp', '=', $id)->get();
+        return $caraccomp;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function crearCaracComp(Request $request){
+        $input = $request->all();
+        $caraccomp = new Caraccomp();
+        $caraccomp->caract_comp = $input["caract_comp"];
+        $caraccomp->cod_comp = $input["cod_comp"];
+        $caraccomp->cod_carac = $input["cod_carac"];
+        $caraccomp->valor_carac = $input["valor_carac"];
+        $caraccomp->unidad = $input["unidad"];
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Caraccomp  $caraccomp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Caraccomp $caraccomp)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Caraccomp  $caraccomp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Caraccomp $caraccomp)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Caraccomp  $caraccomp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Caraccomp $caraccomp)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Caraccomp  $caraccomp
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Caraccomp $caraccomp)
-    {
-        //
+        $caraccomp->save();
+        return $caraccomp;
     }
 }

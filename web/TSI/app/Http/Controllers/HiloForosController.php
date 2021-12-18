@@ -12,9 +12,10 @@ class HiloForosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getHiloForos()
     {
-        //
+        $hilo = Hiloforo::all();
+        return $hilo;
     }
 
     /**

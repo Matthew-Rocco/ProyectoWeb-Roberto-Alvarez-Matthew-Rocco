@@ -12,9 +12,10 @@ class CategoriaForosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getCategoriaForo()
     {
-        //
+        $categoria = CategoriaForo::all();
+        return $categoria;
     }
 
     /**
