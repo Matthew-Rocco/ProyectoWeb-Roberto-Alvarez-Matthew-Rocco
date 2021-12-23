@@ -20,7 +20,7 @@
         <!-- prueba rara para hacer un navbar que siga la pantalla ewe -->
         <nav class="fixed-top navbar estilonavbar navbar-expand-lg navbar-light bg-gradient top-0">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('mostrar_componentes') }}">
                     <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -31,10 +31,6 @@
                 <div class="collapse navbar-collapse row gx-5" id="navbarNavAltMarkup">
                     <div class="col-9">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" style="color:white" aria-current="page"
-                                    href="{{ route('home') }}">Inicio</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link active" style="color:white" href="{{ route('mostrar_componentes') }}">Componentes</a>
                             </li>

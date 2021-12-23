@@ -12,30 +12,14 @@ class ListasController extends Controller
 
     public function crearLista(Request $request){
         $input = $request->all();
-        $userid = $input["userid"];
-        $titulo = $input["titulo"];
-        $gabinete = $input["gabinete"];
-        $placamadre = $input["placamadre"];
-        $procesador = $input["procesador"];
-        $tarjetavideo = $input["tarjetavideo"];
-        $almacenamiento = $input["almacenamiento"];
-        $fuentepoder = $input["fuentepoder"];
-        $ram = $input["ram"];
-        $cooler = $input["cooler"];
-        $precio = $input["precio"];
+        $correo_usuario = $input["correo_usuario"];
+        $titulo_lista = $input["titulo_lista"];
+        $fecha = $input["fecha"];
         
         $lista = new Lista();
-        $lista->userid = $userid;
-        $lista->titulo = $titulo;
-        $lista->gabinete = $gabinete;
-        $lista->placamadre = $placamadre;
-        $lista->procesador = $procesador;
-        $lista->tarjetavideo = $tarjetavideo;
-        $lista->almacenamiento = $almacenamiento;
-        $lista->fuentepoder = $fuentepoder;
-        $lista->ram = $ram;
-        $lista->cooler = $cooler;
-        $lista->precio = $precio;
+        $lista->correo_usuario = $correo_usuario;
+        $lista->titulo_lista = $titulo_lista;
+        $lista->fecha = $fecha;
 
         $lista->save();
         return $lista;
@@ -55,28 +39,9 @@ class ListasController extends Controller
         
         $id = $input["id"];
         $lista= Lista::findOrFail($id);
-        $titulo = $input["titulo"];
-        $gabinete = $input["gabinete"];
-        $placamadre = $input["placamadre"];
-        $procesador = $input["procesador"];
-        $tarjetavideo = $input["tarjetavideo"];
-        $almacenamiento = $input["almacenamiento"];
-        $fuentepoder = $input["fuentepoder"];
-        $ram = $input["ram"];
-        $cooler = $input["cooler"];
-        $precio = $input["precio"];
+        $titulo_lista = $input["titulo_lista"];
         
-        $lista = new Lista();
-        $lista->titulo = $titulo;
-        $lista->gabinete = $gabinete;
-        $lista->placamadre = $placamadre;
-        $lista->procesador = $procesador;
-        $lista->tarjetavideo = $tarjetavideo;
-        $lista->almacenamiento = $almacenamiento;
-        $lista->fuentepoder = $fuentepoder;
-        $lista->ram = $ram;
-        $lista->cooler = $cooler;
-        $lista->precio = $precio;
+        $lista->titulo_lista = $titulo_lista;
 
         $lista->save();
         return $lista;
@@ -87,4 +52,13 @@ class ListasController extends Controller
         $lista = Lista::findOrFail($id);
         return $lista;
     }
+
+    public function buscarListaPorCorreo(Request $request){
+        $input = $request->all();
+        $correo_usuario = $input["correo_usuario"];
+        $lista = Lista::where('correo_usuario', '=', $correo_usuario)->get();
+        return $lista;
+    }
+
+    
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ComponentesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view("/","home")->name("home");
+Route::view("/","mostrar_componentes")->name("mostrar_componentes");
 Route::view("/mi_lista","mi_lista")->name("mi_lista");
+Route::view("/agregar_lista","agregar_lista")->name("agregar_lista");
 Route::view("/tienda","tienda")->name("tienda");
 Route::view("/users","users")->name("users");
 Route::view("/registrar_users","registrar_users")->name("registrar_users");
@@ -27,6 +29,12 @@ Route::view("/actualizar_componente","actualizar_componente")->name("actualizar_
 Route::view("/actualizar_lista","actualizar_lista")->name("actualizar_lista");
 Route::view("/almacenamiento","almacenamiento")->name("almacenamiento");
 Route::view("/foro","foro")->name("foro");
+Route::view("/comp_tienda","comp_tienda")->name("comp_tienda");
+Route::view("/valoracion_comp","valoracion_comp")->name("valoracion_comp");
+Route::view("/agregar_foro","agregar_foro")->name("agregar_foro");
+
+Route::view("/componente","componente_unico")->name("componente_unico");
+//Route::get('componente/{comp}',[ComponentesController::class, "componente"]);
 
 Route::get('registrar_usuarios', [UsersController::class, "crear_usuario"])->middleware('guest');
 Route::post('registrar_usuarios', [UsersController::class, "guardar_usuario"])->middleware('guest');

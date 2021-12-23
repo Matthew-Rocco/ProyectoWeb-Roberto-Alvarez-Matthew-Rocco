@@ -7,80 +7,30 @@ use Illuminate\Http\Request;
 
 class ValoracionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getValoracion()
     {
         $valoracion = Valoracion::all();
         return $valoracion;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function crearValoracion(Request $request){
+        $input = $request->all();
+        $valoracion = new Valoracion;
+        $valoracion->valoracion_user = $input["valoracion_user"];
+        $valoracion->cod_comp = $input["cod_comp"];
+        $valoracion->correo_user = $input["correo_user"];
+        $valoracion->descripcion = $input["descripcion"];
+        $valoracion->puntos = $input["puntos"];
+        $valoracion->fecha = $input["fecha"];
+
+        $valoracion->save();
+        return $valoracion;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Valoracion  $valoracion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Valoracion $valoracion)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Valoracion  $valoracion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Valoracion $valoracion)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Valoracion  $valoracion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Valoracion $valoracion)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Valoracion  $valoracion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Valoracion $valoracion)
-    {
-        //
+    public function buscarValoracionPorIdComp(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $valoracion = Valoracion::where('cod_comp', '=', $id)->get();
+        return $valoracion;
     }
 }

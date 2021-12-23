@@ -17,15 +17,23 @@ class DetalleListaController extends Controller
         $detalles = Detallelista::all();
         return $detalles;
     }
+    
+    public function buscarDetallePorIdLista(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $detallelista = DetalleLista::where('cod_lista', '=', $id)->get();
+        return $detallelista;
+    }
+    
+    public function crearDetalleLista(Request $request){
+        $input = $request->all();
+        $detallelista = new Detallelista();
+        $detallelista->lista_comp = $input["lista_comp"];
+        $detallelista->cod_lista = $input["cod_lista"];
+        $detallelista->cod_comp = $input["cod_comp"];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $detallelista->save();
+        return $detallelista;
     }
 
     /**

@@ -76,4 +76,8 @@ class ComponentesController extends Controller
         $componente->save();
         return $componente;
     }
+
+    /*public function componente(){
+        return view('/componente_unico');
+    }*/
 };

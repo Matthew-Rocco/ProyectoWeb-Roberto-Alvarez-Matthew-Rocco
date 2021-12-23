@@ -95,11 +95,11 @@ const iniciarActualizacion = async function() {
 };
 
 
-const buscarImagen = async function(id) {
-    let imagen = await buscarPorIdComp(id);
+/*const buscarImagen = async function(id) {
+    let imagen = await buscarImagenPorIdComp(id);
     let ruta = imagen['ruta'];
     return ruta;
-}
+}*/
 
 const cargarTabla = (componentes, imagenes) => {
     /*let tbody = document.querySelector("#tbody-componente");
@@ -152,12 +152,25 @@ const cargarTabla = (componentes, imagenes) => {
         } else if (componentes[i].cod_marca == 7) {
             nombremarca = "WD";
         } else if (componentes[i].cod_marca == 8) {
-            nombremarca = "Transcend";
-        } else if (componentes[i].cod_marca == 9) {
             nombremarca = "Corsair";
+        } else if (componentes[i].cod_marca == 9) {
+            nombremarca = "Gigabyte";
         } else if (componentes[i].cod_marca == 10) {
+            nombremarca = "MSI";
+        } else if (componentes[i].cod_marca == 11) {
+            nombremarca = "Pali";
+        } else if (componentes[i].cod_marca == 12) {
+            nombremarca = "Spektra";
+        } else if (componentes[i].cod_marca == 13) {
+            nombremarca = "Seasonic";
+        } else if (componentes[i].cod_marca == 14) {
+            nombremarca = "Deepcool";
+        } else if (componentes[i].cod_marca == 15) {
+            nombremarca = "EVGA";
+        } else if (componentes[i].cod_marca == 16) {
             nombremarca = "Generica";
         }
+
         /*tdMarca.innerText = nombremarca;
 
 
@@ -176,42 +189,45 @@ const cargarTabla = (componentes, imagenes) => {
 
         tbody.appendChild(tr);*/
 
-        console.log(imagenes[i].ruta)
+        //console.log(imagenes[i].ruta)
         for (let j = 0; j < imagenes.length; ++j) {
-            if ([imagenes[j].cod_comp] == componentes[j].id) {
+
+            if ([imagenes[j].cod_comp] == componentes[i].id) {
                 ruta = imagenes[j].ruta;
-            } else {
-                ruta = "https://e7.pngegg.com/pngimages/829/733/png-clipart-logo-brand-product-trademark-font-not-found-logo-brand.png";
             }
         }
-        //let imagen = buscarImagen(componentes[i].id);
-        //console.log(imagen);
+        /*let imagen = await buscarImagen(componentes[i].id);
+        console.log(imagen);*/
 
         const cuerpocomp = document.createElement("div");
         cuerpocomp.setAttribute("class", "col-3 col-md-3 col-lg-3 mb-2");
         cuerpocomp.innerHTML = `
+        <a class="nav-link" href="componente" id="link${i}">
             <div class="card" style="width: 18rem;">
-                <img src="${ruta}" alt="foto_componente">
+                <img class="rounded img-thumbnail p-1 m-1 align-self-center" style="width:85%" src="${ruta}" alt="foto_componente">
                 <div class="card-body">
-                    <ul class="navbar-nav">
-                        <li><p>${componentes[i].nombre}</p></li>
-                        <li><p>Modelo: ${componentes[i].modelo}</p></li>
-                        <li><p>Marca: ${nombremarca}</p></li>
-                        <li><p>${nombretipo}</p></li>
+                    <ul class="navbar-nav" style="color:black">
+                        <li><p class="fs-5 text-capitalize">${componentes[i].nombre}</p></li>
+                        <li><p class="fs-6">Modelo: ${componentes[i].modelo}</p></li>
+                        <li><p class="fs-6">Marca: ${nombremarca}</p></li>
+                        <li><p class="fs-6">${nombretipo}</p></li>
                     </ul>
+                    <div class="d-none" id="id${i}" value="${componentes[i].id}">${componentes[i].id}</div>
                 </div>
             </div>
+        </a>
         `;
-
         cuerpo.appendChild(cuerpocomp);
 
     }
 };
 
+
 document.querySelector("#tipocomp-select").addEventListener("change", async() => {
     let filtro = document.querySelector("#tipocomp-select").value;
     let componentes = await getComponentes(filtro);
-    cargarTabla(componentes);
+    let imagenes = await getImagenes();
+    cargarTabla(componentes, imagenes);
     let filtrom = document.querySelector("#marca-select");
     filtrom.value = "todos";
 });
@@ -219,7 +235,8 @@ document.querySelector("#tipocomp-select").addEventListener("change", async() =>
 document.querySelector("#marca-select").addEventListener("change", async() => {
     let filtromarca = document.querySelector("#marca-select").value;
     let componentesmarca = await getComponentesMarcas(filtromarca);
-    cargarTabla(componentesmarca);
+    let imagenes = await getImagenes();
+    cargarTabla(componentesmarca, imagenes);
     let filtrot = document.querySelector("#tipocomp-select");
     filtrot.value = "todos";
 });
@@ -230,4 +247,18 @@ document.addEventListener("DOMContentLoaded", async() => {
     let componentes = await getComponentes();
     let imagenes = await getImagenes();
     cargarTabla(componentes, imagenes);
+
+    /*for (let i = 0; i < componentes.length; i++) {
+        componente = "#" + componentes[i].id;
+        if (componente == document.querySelector("#" + componentes[i].id)) {
+            document.querySelector("#link" + componentes[i].id).addEventListener("click", async() => {
+                localStorage.setItem('id', document.querySelector("#" + componentes[i].id).innerHTML)
+            });
+        }
+    }*/
+    for (let i = 0; i < componentes.length; i++) {
+        document.querySelector(`#link${i}`).addEventListener("click", async() => {
+            localStorage.setItem('id', document.querySelector(`#id${i}`).innerHTML)
+        });
+    }
 });

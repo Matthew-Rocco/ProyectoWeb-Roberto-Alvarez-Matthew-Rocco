@@ -16,10 +16,10 @@ class CrearTablaDetalleListas extends Migration
         Schema::create('detalle_listas', function (Blueprint $table) {
             $table->string('lista_comp')->primary();
             $table->unsignedBigInteger('cod_lista');
-            $table->string('cod_comptienda');
+            $table->unsignedBigInteger('cod_comp');
 
             $table->foreign("cod_lista")->references('id')->on("listas")->onDelete('cascade');
-            $table->foreign("cod_comptienda")->references('cod_comp_tienda')->on("comp_tiendas")->onDelete('cascade');
+            $table->foreign("cod_comp")->references('id')->on("componentes")->onDelete('cascade');
 
             $table->timestamps();
         });

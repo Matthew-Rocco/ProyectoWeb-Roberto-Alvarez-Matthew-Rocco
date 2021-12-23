@@ -136,10 +136,22 @@ const cargarTabla = (componentes) => {
             } else if (componentes[i].cod_marca == 7) {
                 tdMarca.innerText = "WD";
             } else if (componentes[i].cod_marca == 8) {
-                tdMarca.innerText = "Transcend";
-            } else if (componentes[i].cod_marca == 9) {
                 tdMarca.innerText = "Corsair";
+            } else if (componentes[i].cod_marca == 9) {
+                tdMarca.innerText = "Gigabyte";
             } else if (componentes[i].cod_marca == 10) {
+                tdMarca.innerText = "MSI";
+            } else if (componentes[i].cod_marca == 11) {
+                tdMarca.innerText = "Palit";
+            } else if (componentes[i].cod_marca == 12) {
+                tdMarca.innerText = "Spektra";
+            } else if (componentes[i].cod_marca == 13) {
+                tdMarca.innerText = "Seasonic";
+            } else if (componentes[i].cod_marca == 14) {
+                tdMarca.innerText = "Deepcool";
+            } else if (componentes[i].cod_marca == 15) {
+                tdMarca.innerText = "EVGA";
+            } else if (componentes[i].cod_marca == 16) {
                 tdMarca.innerText = "Generica";
             }
 

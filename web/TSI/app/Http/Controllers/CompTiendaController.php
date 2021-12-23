@@ -17,70 +17,26 @@ class CompTiendaController extends Controller
         $comptienda = Comptienda::all();
         return $comptienda;
     }
+    
+    public function crearCompTienda(Request $request){
+        $input = $request->all();
+        $comptienda = new Comptienda();
+        $comptienda->cod_comp_tienda = $input["cod_comp_tienda"];
+        $comptienda->cod_comp = $input["cod_comp"];
+        $comptienda->cod_tienda = $input["cod_tienda"];
+        $comptienda->correo_usuario = $input["correo_usuario"];
+        $comptienda->precio_comp = $input["precio_comp"];
+        $comptienda->link_comp = $input["link_comp"];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $comptienda->save();
+        return $comptienda;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comptienda  $comptienda
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comptienda $comptienda)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comptienda  $comptienda
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comptienda $comptienda)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comptienda  $comptienda
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Comptienda $comptienda)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comptienda  $comptienda
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comptienda $comptienda)
-    {
-        //
+    public function buscarCompTiendaPorIdComp(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $comptienda = Comptienda::where('cod_comp', '=', $id)->get();
+        return $comptienda;
     }
 }

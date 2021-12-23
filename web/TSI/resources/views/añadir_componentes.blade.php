@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="ventinc-txt" class="form-label">Ventiladores Incorporados</label>
-                                    <input type="number" min="0"  class="form-control" id="ventinc-txt">
+                                    <input type="number" placeholder="0" min="0"  class="form-control" id="ventinc-txt">
                                 </div>
                                 <div class="mb-3">
                                     <label for="espvent-txt" class="form-label">Espacios para Ventilador</label>
@@ -84,7 +84,7 @@
                                     <label for="dim-txt" class="form-label">Dimensiones</label>
                                     <div class="row">
                                         <div class="col-10 col-md-10 col-lg-10 pe-0">
-                                            <input type="text" class="form-control" id="dim-txt">
+                                            <input type="text" placeholder="HxLxA" class="form-control" id="dim-txt">
                                         </div>
                                         <div class="col col-md col-lg">
                                             <label class="form-label">mm</label>
