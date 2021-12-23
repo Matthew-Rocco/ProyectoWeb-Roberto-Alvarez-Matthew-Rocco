@@ -32,6 +32,8 @@ Route::view("/foro","foro")->name("foro");
 Route::view("/comp_tienda","comp_tienda")->name("comp_tienda");
 Route::view("/valoracion_comp","valoracion_comp")->name("valoracion_comp");
 Route::view("/agregar_foro","agregar_foro")->name("agregar_foro");
+Route::view("/hilo_foro","foro_unico")->name("foro_unico");
+Route::view("/añadir_comentario","añadir_comentario")->name("añadir_comentario");
 
 Route::view("/componente","componente_unico")->name("componente_unico");
 //Route::get('componente/{comp}',[ComponentesController::class, "componente"]);

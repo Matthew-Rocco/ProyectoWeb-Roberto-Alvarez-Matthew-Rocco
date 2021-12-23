@@ -18,6 +18,12 @@ class ImagenesController extends Controller
         $imagen = Imagen::where('cod_comp', '=', $id)->firstOrFail();
         return $imagen;
     }
+    public function buscarImagenPorIdHilo(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $imagen = Imagen::where('cod_hilo_foro', '=', $id)->firstOrFail();
+        return $imagen;
+    }
 
     public function crearImagen(Request $request){
         $input = $request->all();

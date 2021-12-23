@@ -102,4 +102,12 @@ class UsersController extends Controller
         $user->save();
         return $user;
     }
+
+    public function getNombre(Request $request){
+        $input = $request->all();
+        $correo = $input["correo"];
+        $user = User::where('email', '=', $correo)->firstOrFail();
+        $nombre = $user["name"];
+        return $nombre;
+    }
 };

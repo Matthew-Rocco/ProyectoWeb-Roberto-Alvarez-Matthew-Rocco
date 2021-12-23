@@ -18,69 +18,21 @@ class CategoriaForosController extends Controller
         return $categoria;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function buscarCategoriaPorIdHilo(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $categoria = Categoriaforo::where('cod_comp', '=', $id)->get();
+        return $categoria;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function crearCategoriaForo(Request $request){
+        $input = $request->all();
+        $categoria = new Categoriaforo();
+        $categoria->cat_foro = $input["cat_foro"];
+        $categoria->cod_foro = $input["cod_foro"];
+        $categoria->cod_categoria = $input["cod_categoria"];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Categoriaforo  $categoriaforo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Categoriaforo $categoriaforo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Categoriaforo  $categoriaforo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Categoriaforo $categoriaforo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categoriaforo  $categoriaforo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Categoriaforo $categoriaforo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Categoriaforo  $categoriaforo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Categoriaforo $categoriaforo)
-    {
-        //
+        $categoria->save();
+        return $categoria;
     }
 }

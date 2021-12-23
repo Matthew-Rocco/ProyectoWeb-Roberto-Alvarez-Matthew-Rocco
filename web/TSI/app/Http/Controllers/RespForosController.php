@@ -17,70 +17,32 @@ class RespForosController extends Controller
         $respforo = Respforo::all();
         return $respforo;
     }
+    
+    public function crearRespForo(Request $request){
+        $input = $request->all();
+        $respforo = new Respforo();
+        $respforo->cod_foro = $input["cod_foro"];
+        $respforo->correo_user = $input["correo_user"];
+        $respforo->descripcion = $input["descripcion"];
+        $respforo->fecha = $input["fecha"];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $respforo->save();
+        return $respforo;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function buscarRespForoPorIdHilo(Request $request){
+        $input = $request->all();
+        $cod_foro = $input["id"];
+        $respforo = Respforo::where('cod_foro', '=', $cod_foro)->get();
+        return $respforo;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Respforo  $respforo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Respforo $respforo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Respforo  $respforo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Respforo $respforo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Respforo  $respforo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Respforo $respforo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Respforo  $respforo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Respforo $respforo)
-    {
-        //
+    public function eliminarRespuesta(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $resp_foro = RespForo::findOrFail($id);
+        $resp_foro->delete();
+        return "ok";
     }
 }

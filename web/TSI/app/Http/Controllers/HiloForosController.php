@@ -17,70 +17,23 @@ class HiloForosController extends Controller
         $hilo = Hiloforo::all();
         return $hilo;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    
+    public function buscarHiloPorId(Request $request){
+        $input = $request->all();
+        $id = $input["id"];
+        $hilo = HiloForo::where('id', '=', $id)->firstOrFail();
+        return $hilo;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function crearHiloForo(Request $request){
+        $input = $request->all();
+        $hilo = new Hiloforo();
+        $hilo->correo_user = $input["correo_usuario"];
+        $hilo->titulo = $input["titulo"];
+        $hilo->descripcion = $input["descripcion"];
+        $hilo->fecha = $input["fecha"];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Hiloforo  $hiloforo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Hiloforo $hiloforo)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Hiloforo  $hiloforo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Hiloforo $hiloforo)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Hiloforo  $hiloforo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Hiloforo $hiloforo)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Hiloforo  $hiloforo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Hiloforo $hiloforo)
-    {
-        //
+        $hilo->save();
+        return $hilo;
     }
 }

@@ -38,7 +38,7 @@ const actualizar = async function() {
         let idComponente = this.idComponente;
         let componente = await buscarPorId(idComponente);
 
-        componente.cod_tipo_comp = document.querySelector("#tipo-actualizar").value;
+        componente.cod_tipo_comp = document.querySelector("#tiposcomp-select").value;
         componente.nombre = document.querySelector("#nombre-txt").value;
         componente.descripcion = document.querySelector("#descripcion-txt").value;
         componente.modelo = document.querySelector("#modelo-txt").value;

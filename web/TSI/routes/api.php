@@ -14,6 +14,11 @@ use App\Http\Controllers\CompTiendaController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ValoracionController;
 use App\Http\Controllers\ImagenesController;
+use App\Http\Controllers\HiloForosController;
+use App\Http\Controllers\RespForosController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CategoriaForosController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -59,6 +64,7 @@ Route::post('caraccomp/post',[CaracteristicaCompController::class, "crearCaracCo
 //Usuarios
 Route::get('users/get',[UsersController::class, "getUsers"]);
 Route::get('users/buscarPorId', [UsersController::class, "buscarPorId"]);
+Route::get('users/getNombre',[UsersController::class, "getNombre"]);
 
 Route::post('users/post',[UsersController::class, "crearUsers"]);
 Route::post('users/actualizar',[UsersController::class, "actualizarUsers"]);
@@ -93,9 +99,27 @@ Route::post('detallelista/post', [DetalleListaController::class, "crearDetalleLi
 //Imagenes
 Route::get('imagenes/get',[ImagenesController::class, "getImagenes"]);
 Route::get('imagenes/buscarImagenPorIdComp', [ImagenesController::class, "buscarImagenPorIdComp"]);
+Route::get('imagenes/buscarImagenPorIdHilo', [ImagenesController::class, "buscarImagenPorIdHilo"]);
 
 Route::post('imagenes/post',[ImagenesController::class, "crearImagen"]);
 
 //Valoracion
 Route::get('valoracion/buscarValoracionPorIdComp', [ValoracionController::class, "buscarValoracionPorIdComp"]);
 Route::post('valoracion/post', [ValoracionController::class, "crearValoracion"]);
+
+//Hilo Foro
+Route::get('hilo_foro/get', [HiloForosController::class, "getHiloForos"]);
+Route::get('hilo_foro/buscarHiloPorId', [HiloForosController::class, "buscarHiloPorId"]);
+Route::post('hilo_foro/post', [HiloForosController::class, "crearHiloForo"]);
+
+//Resp Foro
+Route::get('resp_foro/buscarRespForoPorIdHilo', [RespForosController::class, "buscarRespForoPorIdHilo"]);
+Route::post('resp_foro/post', [RespForosController::class, "crearRespForo"]);
+Route::post('resp_foro/delete', [RespForosController::class, "eliminarRespuesta"]);
+
+//Categoria
+Route::get('categorias/get', [CategoriasController::class, "getCategorias"]);
+
+//Categoria Foro
+Route::post('categoria_foro/post', [CategoriaForosController::class, "crearCategoriaForo"]);
+Route::get('categoria_foro/buscarCategoriaPorIdHilo', [CategoriaForosController::class, "buscarCategoriaPorIdHilo"]);
